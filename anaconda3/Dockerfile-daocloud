@@ -1,4 +1,4 @@
-FROM daocloud/ jupyter-notebook
+FROM daocloud/jupyter-notebook
 
 # https://github.com/Calysto/metakernel/tree/master/metakernel_bash
 RUN pip install metakernel_bash
