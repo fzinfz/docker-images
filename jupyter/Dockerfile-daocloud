@@ -1,5 +1,5 @@
 FROM daocloud.io/daocloud/jupyter-notebook
-MAINTAINER Ferro Fang <fzinfz@gmail.com>
+# MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
 # https://github.com/Calysto/metakernel/tree/master/metakernel_bash
 RUN pip install metakernel_bash
@@ -17,7 +17,7 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # copy test notebooks and expose ports
-COPY *.ipynb /home/jovyan/work/
+RUN git clone https://github.com/fzinfz/notes.git
 EXPOSE 8888
 
 
