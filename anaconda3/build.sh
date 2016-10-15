@@ -1,1 +1,1 @@
-docker build -t fzinfz/anaconda3:latest .
+docker build -f Dockerfile-anaconda3 -t fzinfz/anaconda3:latest .

@@ -1,5 +1,5 @@
 FROM continuumio/anaconda3
-MAINTAINER Ferro Fang <fzinfz@gmail.com>
+# MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
 # https://github.com/Calysto/metakernel/tree/master/metakernel_bash
 RUN pip install metakernel_bash
@@ -17,8 +17,8 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # copy test notebooks and expose ports
+ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
 COPY *.ipynb /root/
 EXPOSE 8888
-
 
 
