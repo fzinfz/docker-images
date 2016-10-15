@@ -12,3 +12,5 @@ RUN chmod -R 777 storage
 
 RUN apk add --no-cache mysql-client     
 
+RUN cp .env.example .env
+COPY nginx-default.conf /etc/nginx/sites-enabled/default.conf
