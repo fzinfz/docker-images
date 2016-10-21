@@ -12,8 +12,8 @@ RUN cpan Mojolicious \
 	DateTime \
 	Net::DNS \
 	List::Util \
-	Devel::Cover (for UT coverage) \
-	Test::Pretty (nicer output for prove)
+	Devel::Cover \
+	Test::Pretty 
 RUN git clone git://github.com/skarfacegc/FlowTrack.git
 
 
