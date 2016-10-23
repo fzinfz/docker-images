@@ -13,12 +13,12 @@ RUN set -ex \
         musl-dev \
         openssl \
         openssh 
-        
+
+ENV GOLANG_SRC_URL https://github.com/gomini/go-mips32.git
 RUN cd /usr/local/ \
         && git clone "$GOLANG_SRC_URL" go
 
 ENV GOLANG_VERSION 1.4.2
-ENV GOLANG_SRC_URL https://github.com/gomini/go-mips32.git
 ENV GOOS linux
 ENV GOARCH mips32le
 # ENV GOROOT /usr/local/go
