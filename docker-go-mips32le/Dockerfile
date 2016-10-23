@@ -1,4 +1,5 @@
-# Modified from https://github.com/yongjhih/docker-go-mips32/blob/dev.github/Dockerfile
+# Modified for LE version. 
+# Source code from: http://conoroneill.net/three-ways-to-build-go-14-binaries-for-mips32-onion-omega-golang/
 
 FROM alpine:3.3
 
