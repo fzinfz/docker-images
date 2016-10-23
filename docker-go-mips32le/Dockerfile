@@ -1,6 +1,6 @@
 # Modified from https://github.com/yongjhih/docker-go-mips32/blob/dev.github/Dockerfile
 
-FROM alpine
+FROM alpine:3.3
 
 ENV GOLANG_VERSION 1.4.2
 ENV GOLANG_SRC_URL https://github.com/gomini/go-mips32.git
@@ -17,11 +17,12 @@ RUN set -ex \
         gcc \
         musl-dev \
         openssl \
-        openssh \
-        \
-  && cd /usr/local/ \
-        && git clone "$GOLANG_SRC_URL" go \
-        && cd /usr/local/go/src \
+        openssh 
+        
+RUN cd /usr/local/ \
+        && git clone "$GOLANG_SRC_URL" go
+
+RUN cd /usr/local/go/src \
         && ./make.bash \
         \
         && apk del .build-deps
