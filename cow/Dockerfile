@@ -1,6 +1,6 @@
 FROM golang
 
-RUN go get -v github.com/netroby/cow
+RUN go get -v github.com/cyfdecyf/cow
 
 COPY init.sh .
 
