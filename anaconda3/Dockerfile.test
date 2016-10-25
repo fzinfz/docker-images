@@ -1,7 +1,7 @@
 FROM fzinfz/anaconda3
 # MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2a sqlite
+RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
 
 RUN apt-get install nodejs-legacy npm libzmq3-dev && npm install -g ijavascript
 
