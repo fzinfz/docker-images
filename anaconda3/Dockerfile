@@ -16,17 +16,28 @@ RUN /bin/bash -c "source activate py27 && \
     python2 -m ipykernel install --user && \
     source deactivate py27"
 
-
+# DB support for Python 3
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
 
+# Linux Tools for shell
 RUN apt-get update && apt-get install -y apt-utils 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y net-tools tcpdump  mtr
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y net-tools tcpdump  mtr nmap ncdu vim aria2 libzmq3-dev npm
 
-# RUN apt-get install nodejs-legacy npm libzmq3-dev && npm install -g ijavascript
+# https://github.com/n-riesco/ijavascript
+RUN /bin/bash -c "source activate py27 && \
+    curl -sL https://deb.nodesource.com/setup_6.x |bash - && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
+    source deactivate py27"
 
-# copy test notebooks and expose ports
+RUN /bin/bash -c " \
+    npm install --unsafe-perm -g ijavascript && \
+    ijs --ijs-install=local && \
+    jupyter-kernelspec install /root/.local/share/jupyter/kernels/javascript" 
+
+# Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
-COPY *.ipynb /root/
+
 EXPOSE 8888
 
-
+#Testing
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y 
