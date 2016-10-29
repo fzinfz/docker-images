@@ -16,6 +16,14 @@ RUN /bin/bash -c "source activate py27 && \
     python2 -m ipykernel install --user && \
     source deactivate py27"
 
+
+RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
+
+RUN apt-get update 
+#RUN apt-get install install mtr-tiny 
+
+# RUN apt-get install nodejs-legacy npm libzmq3-dev && npm install -g ijavascript
+
 # copy test notebooks and expose ports
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
 COPY *.ipynb /root/
