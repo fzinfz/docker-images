@@ -19,8 +19,8 @@ RUN /bin/bash -c "source activate py27 && \
 
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
 
-RUN apt-get update 
-#RUN apt-get install install mtr-tiny 
+RUN apt-get update && apt-get install -y apt-utils 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y net-tools tcpdump  mtr
 
 # RUN apt-get install nodejs-legacy npm libzmq3-dev && npm install -g ijavascript
 
