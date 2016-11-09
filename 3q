@@ -1,0 +1,7 @@
+FROM golang
+
+RUN go get github.com/xtaci/kcptun/server &&
+    go get github.com/xtaci/kcptun/client &&
+    rm -rf /go/src /go/pkg
+
+WORKDIR /go/bin
