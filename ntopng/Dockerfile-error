@@ -1,0 +1,11 @@
+FROM ubuntu
+
+RUN apt-get update && apt-get install -y git build-essential autoconf libtool libpcap-dev
+
+RUN git clone https://github.com/ntop/nDPI.git 
+RUN cd nDPI &&  ./autogen.sh && make && cd ..
+
+RUN apt-get install -y libcurl4-gnutls-dev libsqlite3-dev libmysql++-dev libgeoip-dev
+RUN git clone https://github.com/ntop/ntopng.git
+RUN cd ntopng && ./autogen.sh && ./configure && make && make install
+
