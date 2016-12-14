@@ -11,4 +11,3 @@ RUN cd ntopng && \
     ./configure && make && make install
 
 RUN apt-get install -y vim
-
