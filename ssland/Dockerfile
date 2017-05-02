@@ -1,5 +1,16 @@
-FROM python:3
+# https://github.com/laobubu/ssland/wiki/Install
+
+FROM python:2.7
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
 ADD https://raw.githubusercontent.com/laobubu/ssland/universal/requirements.txt /
 RUN pip install -r /requirements.txt
+
+RUN mkdir /ssland
+WORKDIR /ssland
+
+ADD shadowsocks.json /etc/shadowsocks.json
+
+#  git clone https://github.com/laobubu/ssland.git
+#  docker run --net host --rm -it -v /root/data/docker-data/ssland/:/ssland fzinfz/ssland /bin/bash
+
