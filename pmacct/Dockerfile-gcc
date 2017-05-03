@@ -1,0 +1,14 @@
+FROM gcc 
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+# https://github.com/pmacct/pmacct/blob/master/QUICKSTART#L30
+RUN git clone https://github.com/pmacct/pmacct.git 
+
+RUN apt update 
+RUN apt install -y libpcap-dev librabbitmq-dev librdkafka-dev libjansson-dev libmaxminddb-dev
+RUN cd /pmacct && \
+    ./autogen.sh && ./configure \
+    --enable-geoipv2 \
+    --enable-rabbitmq --enable-jansson --enable-kafka \
+    --enable-sqlite3  --enable-mysql  --enable-pgsql \
+    && make && make install 
