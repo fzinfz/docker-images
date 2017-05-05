@@ -1,0 +1,17 @@
+FROM alpine
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+# https://github.com/pmacct/pmacct/blob/master/QUICKSTART#L30
+
+RUN apk add --no-cache --virtual .build-deps \
+      alpine-sdk linux-headers && \ 
+    apk add --no-cache openssl-dev && \
+    git clone https://github.com/pmacct/pmacct.git 
+RUN apk add --no-cache pkgconfig libtool autoconf  automake libpcap-dev 
+
+# TODO: librabbitmq
+
+RUN cd /pmacct && \
+ ./autogen.sh && ./configure --enable-rabbitmq  --enable-kafka && \
+    make && make install && \
+    apk del .build-deps 
