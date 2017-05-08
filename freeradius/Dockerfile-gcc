@@ -1,0 +1,7 @@
+FROM  gcc:6 
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+#RUN apt update && apt install -y linux-headers-$(uname -r) build-essential  git \
+RUN apt update && apt install -y libtalloc-dev libkqueue-dev libcrypto++-dev
+RUN git clone https://github.com/FreeRADIUS/freeradius-server.git && \
+    cd freeradius-server && ./configure && make && make install 
