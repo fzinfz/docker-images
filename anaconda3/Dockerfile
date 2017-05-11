@@ -29,6 +29,9 @@ RUN  conda install -y scrapy
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
 
+RUN conda config --add channels conda-forge 
+run conda install pika pyzmq
+
 EXPOSE 8888
 
 #Testing
