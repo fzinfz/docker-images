@@ -10,5 +10,4 @@ RUN cd /pmacct && \
     ./autogen.sh && ./configure \
     --enable-geoipv2 \
     --enable-rabbitmq --enable-jansson --enable-kafka \
-    --enable-sqlite3  --enable-mysql  --enable-pgsql \
     && make && make install 
