@@ -1,12 +1,12 @@
-FROM continuumio/miniconda 
+FROM fzinfz/anaconda3 
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
 # Not tested
 # https://github.com/n-riesco/ijavascript
-# RUN /bin/bash -c "source activate py27 && \
-RUN curl -sL https://deb.nodesource.com/setup_6.x |bash - && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs 
-#    source deactivate py27"
+RUN /bin/bash -c "source activate py27 && \
+    curl -sL https://deb.nodesource.com/setup_6.x |bash - && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
+    source deactivate py27"
 
 RUN /bin/bash -c " \
     npm install --unsafe-perm -g ijavascript && \
