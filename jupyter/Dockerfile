@@ -5,6 +5,6 @@ RUN apt update && apt install -y openjdk-7-jdk
 RUN git clone https://github.com/ligee/kotlin-jupyter.git
 
 
-RUN cd kotlin-jupyter && ./gradlew install
+#RUN cd kotlin-jupyter && ./gradlew install
 
 

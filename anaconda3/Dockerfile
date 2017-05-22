@@ -9,10 +9,6 @@ RUN pip install --upgrade pexpect && \
     pip install bash_kernel && \
     python -m bash_kernel.install
 
-# Linux Tools for shell
-RUN apt-get update && apt-get install -y apt-utils 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y net-tools tcpdump  mtr nmap ncdu vim aria2 libzmq3-dev npm gcc
-
 # Install Python 2.7 env and jupyter kernel
 RUN conda create --name=py27 python=2.7 -y
 RUN /bin/bash -c "source activate py27 && \
@@ -32,7 +28,12 @@ ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_no
 RUN conda config --add channels conda-forge 
 RUN conda install pika pyzmq
 
-EXPOSE 8888
+# Linux Tools for shell
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libzmq3-dev gcc \
+    apt-utils software-properties-common python-software-properties \
+    net-tools dnsutils tcpdump  mtr nmap nethogs traceroute bmon iputils-ping nload iftop  \
+    locate ncdu vim aria2 curl wget htop git pciutils unzip \
+    iperf3 sysbench
 
-#Testing
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y 
+EXPOSE 8888
