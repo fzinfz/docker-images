@@ -9,6 +9,9 @@ RUN pip install --upgrade pexpect && \
     pip install bash_kernel && \
     python -m bash_kernel.install
 
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libzmq3-dev gcc    
+
 # Install Python 2.7 env and jupyter kernel
 RUN conda create --name=py27 python=2.7 -y
 RUN /bin/bash -c "source activate py27 && \
@@ -30,7 +33,6 @@ RUN conda install pika pyzmq
 
 # Linux Tools for shell
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libzmq3-dev gcc \
     apt-utils software-properties-common python-software-properties \
     net-tools dnsutils tcpdump  mtr nmap nethogs traceroute bmon iputils-ping nload iftop  \
     locate ncdu vim aria2 curl wget htop git pciutils unzip \
