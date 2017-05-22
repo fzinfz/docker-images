@@ -1,0 +1,7 @@
+FROM fzinfz/anaconda3
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+RUN apt update && apt install -y openjdk-7-jdk
+ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+
+
