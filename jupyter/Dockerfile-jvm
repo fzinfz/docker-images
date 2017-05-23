@@ -1,7 +1,14 @@
 FROM fzinfz/anaconda3
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN apt update && apt install -y openjdk-7-jdk
-ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+RUN echo "deb http://ftp.de.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+	 
+RUN apt update
+RUN apt install -t jessie-backports -y openjdk-8-jdk-headless openjdk-8-jre-headless ca-certificates-java
 
+#openjdk-8-jre openjdk-8-jre-headless openjdk-8-jdk openjdk-8-source ca-certificates-java
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+RUN git clone https://github.com/ligee/kotlin-jupyter.git
+RUN cd kotlin-jupyter && ./gradlew install
 
