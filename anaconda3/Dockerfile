@@ -31,6 +31,10 @@ ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_no
 RUN conda config --add channels conda-forge 
 RUN conda install pika pyzmq
 
+RUN /bin/bash -c "source activate py27 && \
+    conda install pika pyzmq && \
+    source deactivate py27"
+
 # Linux Tools for shell
 RUN apt-get update && apt-get install -y \
     apt-utils software-properties-common python-software-properties \
