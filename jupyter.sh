@@ -1,4 +1,8 @@
-docker run --name jupyter \
+n=jupyter
+docker stop $n 
+docker rm $n
+
+docker run --name $n \
     --net host \
     -v $(pwd)/../:/host \
     -e GEN_CERT=yes  \
