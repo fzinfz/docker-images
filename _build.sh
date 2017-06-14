@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -z ${1+x} ]; then
 cat << EOF 
 Usage:
