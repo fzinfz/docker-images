@@ -1,6 +1,6 @@
 #!/bin/bash
 
-n=ELK_elasticsearch
+n="${0%%.*}"
 docker stop $n 
 docker rm $n
 

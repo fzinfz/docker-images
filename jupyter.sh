@@ -1,4 +1,6 @@
-n=jupyter
+#!/bin/bash
+
+n="${0%%.*}"
 docker stop $n 
 docker rm $n
 
