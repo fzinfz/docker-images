@@ -1,4 +1,17 @@
 #!/bin/bash
+
+if [ -z ${1+x} ]; then
+cat << EOF 
+cat script for usage.
+Examples:
+	./_run.sh alpine -it sh
+	./_run.sh fzinfz/ubuntu '-it --rm' bash
+	./_run.sh rabbitmq/amqp/ubuntu/...(pre-defined docker run)
+	
+EOF
+exit 1
+fi
+
 export IFS=' '
 
 n=${1##*/}
@@ -23,7 +36,7 @@ case $n in
 	i=$1
 	mode=$2
 	shift 2
-	cmd=sh -c "$*"
+	cmd="sh -c \"$*\""
 esac
 
 docker run --name $n \

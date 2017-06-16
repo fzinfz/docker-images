@@ -1,6 +1,6 @@
 #!/bin/bash
 
-n="${0%%.*}"
+n=$(basename $0 .sh)
 docker stop $n 
 docker rm $n
 
