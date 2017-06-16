@@ -29,4 +29,4 @@ esac
 export IFS=' '
 docker run --name $n \
     --net host \
-    $mode $i sh -c "$cmd" 
+    $mode $i $cmd
