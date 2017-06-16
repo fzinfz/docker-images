@@ -4,7 +4,7 @@ if [ -z ${1+x} ]; then
 cat << EOF 
 Usage: 
 	export amqp_host_ip=<your rabbitmq host ip, default 127.0.0.1>
-	./pmacct--tag--run_mode--amqp_ip--cmd.sh <TAG> <RUN_MODE> <COMMAND>
+	./pmacct <TAG> <RUN_MODE> <COMMAND>
 	TAG: ''/latest, dev
 	RUN_MODE: it, d, ...
 
