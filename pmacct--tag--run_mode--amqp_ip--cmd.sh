@@ -2,15 +2,18 @@
 
 if [ -z ${1+x} ]; then
 cat << EOF 
-Usage: ./pmacct--tag--run_mode--amqp_ip--cmd.sh <TAG> <RUN_MODE> <AMQP_IP> <COMMAND>
+Usage: 
+	export amqp_host_ip=<your rabbitmq host ip, default 127.0.0.1>
+	./pmacct--tag--run_mode--amqp_ip--cmd.sh <TAG> <RUN_MODE> <COMMAND>
 	TAG: ''/latest, dev
 	RUN_MODE: it, d, ...
-	AMQP_IP: ''/127.0.0.1, your rabbitmq host ip
 
 Examples:
-	./pmacct--tag--run_mode--amqp_ip--cmd.sh '' '-it --rm' '' bash
-	./pmacct--tag--run_mode--amqp_ip--cmd.sh '' -it '' pmacctd -V
-	./pmacct--tag--run_mode--amqp_ip--cmd.sh dev -d 172.16.0.1 pmacctd -f /conf/amqp.conf -i ens3
+	./pmacct.sh '' '-it --rm' bash
+	./pmacct.sh '' '-it --rm' pmacctd -V
+
+	export amqp_host_ip=172.16.0.1
+	./pmacct.sh '' '-it --rm' pmacctd -f /conf/amqp.conf -i ens3		
 EOF
 exit 1
 fi
@@ -22,17 +25,16 @@ fi
 
 run_mode=$2
 
-amqp_host_ip=$3
 if [ "$amqp_host_ip" = "" ]; then
 	amqp_host_ip="127.0.0.1"
 fi
 
-program=${4##*/}
+program=${3##*/}
 n="pmacct-${program}"
 docker stop $n 
 docker rm $n
 
-shift 3
+shift 2
 export IFS=' '
 docker run --name ${n} \
 	--net host \
