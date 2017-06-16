@@ -1,7 +1,7 @@
 #!/bin/bash
+export IFS=' '
 
-n=$1
-shift
+n=${1##*/}
 docker stop $n 
 docker rm $n
 
@@ -19,14 +19,12 @@ case $n in
 	cmd=bash
 	;;
   * )
-	if [ $# -gt 0 ]; then
-		mode=$1
-		shift
-		cmd=sh -c "$*"
-	fi
+	i=$1
+	mode=$2
+	shift 2
+	cmd=sh -c "$*"
 esac
 
-export IFS=' '
 docker run --name $n \
     --net host \
-    $mode $i sh -c "$cmd" 
+    $mode $i $cmd
