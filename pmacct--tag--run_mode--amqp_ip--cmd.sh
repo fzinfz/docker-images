@@ -10,10 +10,13 @@ Usage:
 
 Examples:
 	./pmacct.sh '' '-it --rm' bash
-	./pmacct.sh '' '-it --rm' nfacctd -V
+	./pmacct.sh '' '-it --rm' uacctd -V
 
 	export amqp_host_ip=172.16.0.1
-	./pmacct.sh '' -d pmacctd -f /conf/amqp.conf -i ens3		
+	./pmacct.sh '' -d nfacctd -f /conf/amqp.conf -l 2056
+
+	export nfprobe_receiver=$amqp_host_ip
+	./pmacct.sh '' -d pmacctd -f /conf/nfprobe.conf -i ens3
 EOF
 exit 1
 fi
@@ -40,7 +43,7 @@ docker run --name ${n} \
 	--net host \
 	-v $(pwd)/pmacct.conf.d:/conf \
 	--add-host="amqp_host:$amqp_host_ip" \
-	--add-host="nfprobe_receiver:$amqp_host_ip" \
+	--add-host="nfprobe_receiver:$nfprobe_receiver" \
 	$run_mode \
 	fzinfz/pmacct:$tag  sh -c "$*"
 
