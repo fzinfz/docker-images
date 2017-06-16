@@ -22,7 +22,7 @@ case $n in
 	if [ $# -gt 0 ]; then
 		mode=$1
 		shift
-		cmd="$*"
+		cmd=sh -c "$*"
 	fi
 esac
 
