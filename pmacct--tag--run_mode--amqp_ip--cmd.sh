@@ -40,7 +40,7 @@ docker run --name ${n} \
 	--net host \
 	-v $(pwd)/pmacct.conf.d:/conf \
 	--add-host="amqp_host:$amqp_host_ip" \
-	-e nfprobe_receiver="$amqp_host_ip:2056" \
+	--add-host="nfprobe_receiver:$amqp_host_ip" \
 	$run_mode \
 	fzinfz/pmacct:$tag  sh -c "$*"
 
