@@ -1,21 +1,27 @@
 #!/bin/bash
 
+
+if [ -z ${amqp_host_ip+x} ]; then
+	amqp_host_ip=127.0.0.1
+fi
+
+if [ -z ${nfprobe_receiver+x} ]; then
+        nfprobe_receiver=$amqp_host_ip
+fi
+
 if [ -z ${1+x} ]; then
 cat << EOF 
 Usage: 
-	export amqp_host_ip=<your rabbitmq host ip, default 127.0.0.1>
+	export amqp_host_ip=<your rabbitmq host ip, default $amqp_host_ip>
+	export nfprobe_receiver=<your nfprobe ip, default $nfprobe_receiver> 
 	./pmacct <TAG> <RUN_MODE> <COMMAND>
 	TAG: ''/latest, dev
-	RUN_MODE: it, d, ...
+	RUN_MODE(docker run parameters): -it, -d, ... 
 
 Examples:
 	./pmacct.sh '' '-it --rm' bash
 	./pmacct.sh '' '-it --rm' uacctd -V
-
-	export amqp_host_ip=172.16.0.1
 	./pmacct.sh '' -d nfacctd -f /conf/amqp.conf -l 2056
-
-	export nfprobe_receiver=$amqp_host_ip
 	./pmacct.sh '' -d pmacctd -f /conf/nfprobe.conf -i ens3
 EOF
 exit 1
