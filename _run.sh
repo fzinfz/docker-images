@@ -15,6 +15,7 @@ fi
 export IFS=' '
 
 n=${1##*/}
+echo "container name: $n"
 docker stop $n 
 docker rm $n
 
