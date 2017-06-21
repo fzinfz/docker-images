@@ -16,7 +16,9 @@ docker run --name $n \
 	-v $(pwd)/${n}.conf.d/pipeline/:/usr/share/logstash/pipeline/ \
        	docker.elastic.co/logstash/logstash:$ELK_version 
 
-echo Doc: https://www.elastic.co/guide/en/logstash/current/_pulling_the_image.html
+cat << EOL
+Doc: https://www.elastic.co/guide/en/logstash/current/_pulling_the_image.html
 
-echo Logging: http://$IP_ELK_L:9600/_node/?pretty
+Logging: http://$IP_ELK_L:9600/_node/?pretty
+EOL
 
