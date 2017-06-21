@@ -7,15 +7,16 @@ docker rm $n
 docker run --name $n \
 	--net host \
 	-d --restart unless-stopped \
-	-e amqp_host="$amqp_host_ip" \
+	-e amqp_host="$IP_AMQP" \
 	-e amqp_vhost="/" \
 	-e amqp_user=guest \
 	-e amqp_passwd=guest \
 	-e CONFIG_RELOAD_AUTOMATIC=true \
-	--add-host="elasticsearch:127.0.0.1" \
+	--add-host="elasticsearch:$IP_ELK_E" \
 	-v $(pwd)/${n}.conf.d/pipeline/:/usr/share/logstash/pipeline/ \
-       	docker.elastic.co/logstash/logstash:5.4.1 
+       	docker.elastic.co/logstash/logstash:$ELK_version 
 
-echo Usage: https://www.elastic.co/guide/en/logstash/current/_pulling_the_image.html
-echo Logging: http://localhost:9600/_node/?pretty
+echo Doc: https://www.elastic.co/guide/en/logstash/current/_pulling_the_image.html
+
+echo Logging: http://$IP_ELK_L:9600/_node/?pretty
 

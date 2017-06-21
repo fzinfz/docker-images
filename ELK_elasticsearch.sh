@@ -11,11 +11,12 @@ docker run --name $n \
 	-e path.repo=/usr/share/elasticsearch/data \
 	-e ES_JAVA_OPTS="-Xms3g -Xmx3g" \
 	-v $(pwd)/../docker-data/$n:/usr/share/elasticsearch/data \
-	docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+	docker.elastic.co/elasticsearch/elasticsearch:$ELK_version
 
 cat << EOL 
 Doc: 			https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-Health:			http://elastic:changeme@localhost:9200/_cat/health
-List indices:		http://localhost:9200/_cat/indices?v
-List all records:	http://localhost:9200/<index_name>/_search?pretty=true&q=*:*&size=3
+
+Health:			http://elastic:changeme@$IP_ELK_E:9200/_cat/health
+List indices:		http://$IP_ELK_E:9200/_cat/indices?v
+List all records:	http://$IP_ELK_E:9200/<index_name>/_search?pretty=true&q=*:*&size=3
 EOL

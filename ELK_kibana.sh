@@ -7,7 +7,9 @@ docker rm $n
 docker run --name $n \
 	--net host \
 	-d --restart unless-stopped \
-	--add-host="elasticsearch:127.0.0.1" \
-       	docker.elastic.co/kibana/kibana:5.4.1
+	--add-host="elasticsearch:$IP_ELK_E" \
+       	docker.elastic.co/kibana/kibana:$ELK_version
 
-echo Visit http://localhost:5601
+echo Doc: https://www.elastic.co/guide/en/kibana/current/index.html
+
+echo Visit http://$IP_ELK_K:5601
