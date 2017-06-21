@@ -17,8 +17,10 @@ docker run --name $n \
        	docker.elastic.co/logstash/logstash:$ELK_version 
 
 cat << EOL
+
 Doc: https://www.elastic.co/guide/en/logstash/current/_pulling_the_image.html
 
 Logging: http://$IP_ELK_L:9600/_node/?pretty
+
 EOL
 

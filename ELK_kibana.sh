@@ -10,6 +10,10 @@ docker run --name $n \
 	--add-host="elasticsearch:$IP_ELK_E" \
        	docker.elastic.co/kibana/kibana:$ELK_version
 
-echo Doc: https://www.elastic.co/guide/en/kibana/current/index.html
+cat << EOL
 
-echo Visit http://$IP_ELK_K:5601
+Doc: https://www.elastic.co/guide/en/kibana/current/index.html
+
+Login: http://$IP_ELK_K:5601
+
+EOL

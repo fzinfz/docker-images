@@ -8,13 +8,17 @@ docker run --name $n \
 	--net host \
 	-d --restart unless-stopped \
 	--cap-add=NET_ADMIN \
-	--add-host="elasticsearch:127.0.0.1" \
+	--add-host="elasticsearch:$IP_ELK_E" \
        	docker.elastic.co/beats/packetbeat:$ELK_version
 
 cat << EOL
+
+exporting data to elasticsearch: $IP_ELK_E
+
 Doc: https://www.elastic.co/guide/en/beats/packetbeat/current/index.html
 
 Sample dashboard: https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-sample-dashboards.html
 docker exec -it $n ./scripts/import_dashboards -user elastic -pass changeme
+
 EOL
 
