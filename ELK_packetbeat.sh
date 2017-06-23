@@ -10,6 +10,7 @@ docker run --name $n \
 	--cap-add=NET_ADMIN \
 	--privileged \
 	--add-host="elasticsearch:$IP_ELK_E" \
+	-v $(pwd)/ELK_packetbeat.conf.d/packetbeat.yml:/usr/share/packetbeat/packetbeat.yml \
        	docker.elastic.co/beats/packetbeat:$ELK_version
 
 cat << EOL
