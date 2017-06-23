@@ -8,6 +8,7 @@ docker run --name $n \
 	--net host \
 	-d --restart unless-stopped \
 	--cap-add=NET_ADMIN \
+	--privileged \
 	--add-host="elasticsearch:$IP_ELK_E" \
        	docker.elastic.co/beats/packetbeat:$ELK_version
 
