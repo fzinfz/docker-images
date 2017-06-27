@@ -1,10 +1,7 @@
-FROM python:3-alpine
+FROM python:3
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN apk add --no-cache --virtual .build-deps \
-	git && \
-    git clone https://github.com/alishtory/xsadmin.git && \
-    apk del .build-deps 
+RUN git clone https://github.com/alishtory/xsadmin.git
 
 WORKDIR xsadmin
 RUN pip install -r requirements.txt
