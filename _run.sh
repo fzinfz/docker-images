@@ -6,7 +6,7 @@ cat script for usage.
 Examples:
 	./_run.sh alpine -it sh
 	./_run.sh fzinfz/ubuntu '-it --rm' bash
-	./_run.sh rabbitmq/amqp/ubuntu/...(pre-defined docker run)
+	./_run.sh rabbitmq/amqp/ubuntu/...(pre-defined docker run, check script for details)
 	
 EOF
 exit 1
@@ -20,7 +20,6 @@ docker stop $n
 docker rm $n
 
 mode_d='-d --restart unless-stopped'
-mode_i='-it --rm'
 
 case $n in
   rabbitmq | amqp ) 
@@ -29,16 +28,21 @@ case $n in
 	;;
   ubuntu ) 
 	i="fzinfz/ubuntu"
-	mode="$mode_i --net host"
+	mode="--rm -it --net host"
 	cmd="/bin/bash"
 	;;
   mysql5 )
 	i="mysql:5"
 	mode="$mode_d --net host -v $(pwd)/../docker-data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=$Password"
 	;;
-  pma )
+  pma | phpmyadmin )
 	i="phpmyadmin/phpmyadmin"
-	mode="$mode_d --add-host=db:127.0.0.1 -p 81:80"
+	mode="$mode_d --add-host=db:172.17.0.1 -p 81:80"
+	;;
+  redis )
+	i="redis"
+	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
+	cmd="redis-server --appendonly yes"
 	;;
   * )
 	i=$1
@@ -47,5 +51,6 @@ case $n in
 	cmd="sh -c \"$*\""
 esac
 
-docker run --name $n \
-    $mode $i $cmd
+docker_run="docker run --name $n $mode $i $cmd"
+echo $docker_run
+eval $docker_run
