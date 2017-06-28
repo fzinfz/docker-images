@@ -7,5 +7,6 @@ RUN apk add --no-cache --virtual .build-deps \
     apk del .build-deps 
 
 WORKDIR xsadmin
-RUN pip install -r requirements.txt
-#  "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-4d5xdp55/cffi/
+
+RUN apk add --no-cache python3-dev libffi-dev
+RUN pip3 install --upgrade setuptools && pip3 install -r requirements.txt

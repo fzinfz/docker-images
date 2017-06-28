@@ -25,12 +25,20 @@ mode_i='-it --rm'
 case $n in
   rabbitmq | amqp ) 
 	i="relaxart/rabbitmq-server"
-	mode=$mode_d	
+	mode="$mode_d --host host"
 	;;
   ubuntu ) 
 	i="fzinfz/ubuntu"
-	mode=$mode_i
-	cmd=bash
+	mode="$mode_i --net host"
+	cmd="/bin/bash"
+	;;
+  mysql5 )
+	i="mysql:5"
+	mode="$mode_d --net host -v $(pwd)/../docker-data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=$Password"
+	;;
+  pma )
+	i="phpmyadmin/phpmyadmin"
+	mode="$mode_d --add-host=db:127.0.0.1 -p 81:80"
 	;;
   * )
 	i=$1
@@ -40,5 +48,4 @@ case $n in
 esac
 
 docker run --name $n \
-    --net host \
     $mode $i $cmd
