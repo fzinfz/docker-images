@@ -5,7 +5,8 @@ cat << EOF
 cat script for usage.
 Examples:
 	./_run.sh alpine -it sh
-	./_run.sh fzinfz/ubuntu '-it --rm' bash
+	./_run.sh python "--rm -it --net host"
+	./_run.sh nginx "-d --net host"
 	./_run.sh rabbitmq/amqp/ubuntu/...(pre-defined docker run, check script for details)
 	
 EOF
@@ -47,8 +48,10 @@ case $n in
   * )
 	i=$1
 	mode=$2
-	shift 2
-	cmd="sh -c \"$*\""
+	if [ ! -z ${3+x} ]; then
+		shift 2
+		cmd="sh -c \"$*\""
+	fi
 esac
 
 docker_run="docker run --name $n $mode $i $cmd"
