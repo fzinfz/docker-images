@@ -7,6 +7,8 @@
 @described：用户站点自定义设置
 '''
 import os
+import django
+
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -17,13 +19,11 @@ ALLOWED_HOSTS = ('127.0.0.1', '172.17.0.1',)
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME':  os.path.join(BASE_DIR, 'db.sqlite3') ,
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'xsadmin',
         'USER':'root',
         'PASSWORD': os.environ.get('Mysql_Password',''),
-        'HOST':'127.0.0.1',
+        'HOST': os.environ.get('IP_MYSQL', '127.0.0.1'),
         'PORT':'3306'
     }
 }
