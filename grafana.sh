@@ -7,6 +7,7 @@ docker rm $n
 docker run --name $n \
 	--net host \
 	-d --restart unless-stopped \
+	-v $(pwd)/grafana.conf.d/sample.ini:/etc/grafana/grafana.ini \
 	-e "GF_SERVER_HTTP_PORT=3001" \
 	-e "GF_SECURITY_ADMIN_PASSWORD=admin" \
 	grafana/grafana
