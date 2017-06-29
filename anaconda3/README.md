@@ -23,8 +23,8 @@ docker run --name jupyter \
     --restart unless-stopped \
     -d fzinfz/anaconda3 \
     jupyter notebook  --ip=*
+```    
 Visit: https://server_address:8888
-```
 
 # Display startup logs and token
 `docker logs jupyter`
