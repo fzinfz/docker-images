@@ -1,5 +1,5 @@
 # License
-Invalid nProbe license (/etc/nprobe.license) [Missing license file]
+Invalid nProbe license (/etc/nprobe.license) [Missing license file]  
 NOTE: This is a DEMO version limited to 25000 flows export.
 
 ntopng will now run in enterprise edition for 10 minutes before returning to community mode
@@ -34,6 +34,7 @@ ntopng -i tcp://<nprobe ip>:5556
 ```
 
 # Misc
+```
 nprobe -n <host:port|none> [-i <interface|dump file>] [-t <lifetime timeout>]
  [-d <idle timeout>] [-l <queue timeout>] [-s <snaplen>]
  [-p <aggregation>] [-f <filter>] [-a] [-b <level>] [-G] [-O <# threads>]
@@ -55,3 +56,4 @@ nprobe -n <host:port|none> [-i <interface|dump file>] [-t <lifetime timeout>]
     If you specify none as value, no flow will be export; in this case the -P parameter is mandatory. 
 [--collector-port|-3]:  NetFlow/IPFIX/sFlow collector flows port 
 -i: interface name
+```
