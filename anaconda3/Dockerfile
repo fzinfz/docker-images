@@ -36,10 +36,7 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # Linux Tools for shell
-RUN apt-get update && apt-get install -y \
-    apt-utils software-properties-common python-software-properties \
-    net-tools dnsutils tcpdump  mtr nmap nethogs traceroute bmon iputils-ping nload iftop  \
-    locate ncdu vim aria2 curl wget htop git pciutils unzip \
-    iperf3 sysbench
+ADD ../ubuntu/apt-install-tools.sh .
+RUN sh apt-install-tools.sh
 
 EXPOSE 8888
