@@ -38,7 +38,7 @@ case $n in
 	;;
   pma | phpmyadmin )
 	i="phpmyadmin/phpmyadmin"
-	mode="$mode_d --add-host=db:172.17.0.1 -p 81:80"
+	mode="$mode_d --add-host=db:$IP_MYSQL -p 81:80"
 	;;
   redis )
 	i="redis"
