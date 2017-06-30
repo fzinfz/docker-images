@@ -4,6 +4,12 @@ n=$(basename $0 .sh)
 docker stop $n 
 docker rm $n
 
+if [ -z ${1+x} ];then
+	cmd="/bin/bash"
+else
+	cmd=$*
+fi
+
 docker run --name $n \
 	--net host \
 	--rm -it \
@@ -11,5 +17,5 @@ docker run --name $n \
 	-e Mysql_Password=$Password \
 	-e IP_MYSQL=$IP_MYSQL \
 	-e ALLOWED_HOST=$ALLOWED_HOST \
-	fzinfz/shadowsocks-xsadmin /bin/bash
+	fzinfz/shadowsocks-xsadmin $cmd
 
