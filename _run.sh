@@ -22,6 +22,7 @@ docker stop $n
 docker rm $n
 
 mode_d='-d --restart unless-stopped'
+mode_privileged='--privileged --cap-add=ALL -it -v /dev:/dev -v /lib/modules:/lib/modules'
 
 case $n in
   rabbitmq | amqp ) 
