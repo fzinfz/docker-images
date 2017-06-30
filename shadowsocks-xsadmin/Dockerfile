@@ -9,5 +9,3 @@ RUN mkdir /data && cd /data && \
 WORKDIR /data/xsadmin_deploy/xsadmin
 RUN pip install -r requirements.txt
 
-RUN python manage.py collectstatic --noinput
-
