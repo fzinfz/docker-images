@@ -15,6 +15,7 @@ fi
 
 export IFS=' '
 
+#TODO: filter ':"
 n=${1##*/}
 echo "container name: $n"
 docker stop $n 
@@ -44,6 +45,11 @@ case $n in
 	i="redis"
 	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
 	cmd="redis-server --appendonly yes"
+	;;
+  gcloud )
+	i="fzinfz/cloud-sdk:gcloud"
+	mode="$mode_d --net host -v /:/host"
+	cmd="sleep infinity"
 	;;
   * )
 	i=$1
