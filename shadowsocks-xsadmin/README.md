@@ -1,6 +1,6 @@
 # Dockerfile
-latest: https://github.com/fzinfz/docker-images/blob/master/shadowsocks-xsadmin/Dockerfile
-ssr: https://github.com/fzinfz/docker-images/blob/master/shadowsocks-xsadmin/Dockerfile-ssr
+Tag `latest`: https://github.com/fzinfz/docker-images/blob/master/shadowsocks-xsadmin/Dockerfile  
+Tag `ssr`: https://github.com/fzinfz/docker-images/blob/master/shadowsocks-xsadmin/Dockerfile-ssr
 
 # Official Doc
 https://github.com/alishtory/xsadmin  
