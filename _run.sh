@@ -49,7 +49,7 @@ case $n in
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"
-	cmd="sleep infinity"
+	cmd="sh -c \"gcloud auth activate-service-account --key-file=/key.json && sleep infinity\""
 	;;
   * )
 	i=$1
