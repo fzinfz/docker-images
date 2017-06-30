@@ -2,11 +2,14 @@ FROM python:2.7
 
 # glcoud
 RUN curl https://sdk.cloud.google.com | bash
-ENV PATH="/root/google-cloud-sdk/bin:${PATH}"
+ENV PATH /root/google-cloud-sdk/bin:${PATH}
+ENV GOOGLE_APPLICATION_CREDENTIALS /key.json
 
 # gcsfuse
-export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
-echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install -y gcsfuse
+
+RUN apt update && apt install lsb-release 
+RUN 	export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` && \
+	echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" |  tee /etc/apt/sources.list.d/gcsfuse.list && \
+	curl https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key add - && \
+	apt-get update && \
+	apt-get install -y gcsfuse \
