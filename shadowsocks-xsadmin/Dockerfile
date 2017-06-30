@@ -9,3 +9,4 @@ RUN mkdir /data && cd /data && \
 WORKDIR /data/xsadmin_deploy/xsadmin
 RUN pip install -r requirements.txt
 RUN chmod +x *.py *.sh
+RUN apt update && apt install -y vi
