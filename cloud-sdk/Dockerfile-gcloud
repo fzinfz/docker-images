@@ -3,8 +3,8 @@ FROM python:2.7
 # glcoud
 RUN curl https://sdk.cloud.google.com | bash
 ENV PATH /root/google-cloud-sdk/bin:${PATH}
-ENV GOOGLE_APPLICATION_CREDENTIALS /key.json
-VOLUME /key.json
+ENV GOOGLE_APPLICATION_CREDENTIALS /root/.config/gcloud/application_default_credentials.json
+VOLUME /root/.config/gcloud/application_default_credentials.json
 
 # gcsfuse
 RUN apt update && apt install lsb-release 

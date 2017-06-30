@@ -48,7 +48,7 @@ case $n in
 	;;
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"
-	mode="$mode_d --net host -v /:/host -v $(pwd)../docker-config/cloud-sdk/gcloud_key.json:/key.json "
+	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/root/.config/gcloud/application_default_credentials.json"
 	cmd="sleep infinity"
 	;;
   * )
@@ -63,3 +63,4 @@ esac
 docker_run="docker run --name $n $mode $i $cmd"
 echo $docker_run
 eval $docker_run
+echo "docker exec -it $n /bin/bash"
