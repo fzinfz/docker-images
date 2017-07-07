@@ -1,3 +1,6 @@
+# Dockerfile
+https://github.com/fzinfz/docker-images/tree/master/freeradius
+
 # Sample outputs
 ```
 # docker run --rm -it fzinfz/freeradius  freeradius -v
