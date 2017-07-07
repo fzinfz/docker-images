@@ -36,6 +36,6 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # Linux Tools for shell
-RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/ubuntu/apt-install-tools.sh | bash
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.sh | bash
 
 EXPOSE 8888
