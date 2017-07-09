@@ -11,5 +11,8 @@ RUN /bin/bash -c " \
     npm install --unsafe-perm -g ijavascript && \
     ijs --ijs-install=local && \
     jupyter-kernelspec install /root/.local/share/jupyter/kernels/javascript" 
-    
+
+RUN mkdir /data
+WORKDIR /data
+
 RUN npm install -g create-react-native-app && create-react-native-app ReactNativeSampleApp
