@@ -12,4 +12,4 @@ RUN /bin/bash -c " \
     ijs --ijs-install=local && \
     jupyter-kernelspec install /root/.local/share/jupyter/kernels/javascript" 
     
-RUN npm install -g create-react-native-app
+RUN npm install -g create-react-native-app && create-react-native-app ReactNativeSampleApp
