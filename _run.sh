@@ -31,7 +31,7 @@ case $n in
 	;;
   ubuntu ) 
 	i="fzinfz/ubuntu"
-	mode="--rm -it --net host"
+	mode="--rm -it --net host -v /:/host"
 	cmd="/bin/bash"
 	;;
   mysql5 )
