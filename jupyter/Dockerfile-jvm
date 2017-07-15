@@ -10,6 +10,5 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN git clone https://github.com/ligee/kotlin-jupyter.git
 
-# fail
-# RUN cd kotlin-jupyter && ./gradlew install
+RUN cd kotlin-jupyter && ./gradlew install
 
