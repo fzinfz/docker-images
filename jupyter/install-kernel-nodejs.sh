@@ -7,7 +7,6 @@ npm install --unsafe-perm -g ijavascript && \
     ijs --ijs-install=local && \
     jupyter-kernelspec install /root/.local/share/jupyter/kernels/javascript
     
-mkdir /data
-cd /data
+mkdir /_nodejs && cd /_nodejs
 
 npm install -g create-react-native-app && create-react-native-app ReactNativeSampleApp    
