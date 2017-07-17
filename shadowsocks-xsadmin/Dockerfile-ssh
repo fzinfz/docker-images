@@ -1,3 +1,5 @@
 FROM fzinfz/shadowsocks-xsadmin
 
-RUN apt update && apt install -y openssh-server
+ENV SSH_PORT 23
+ENV RootPassword RootPassword
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword | bash -s ${SSH_PORT} ${RootPassword}
