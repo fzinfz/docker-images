@@ -6,7 +6,7 @@
 ## To install more kernels
 https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages
 
-### images adding nodejs & jvm kernels
+### Images adding nodejs & kotlin kernels
 https://hub.docker.com/r/fzinfz/jupyter/
 
 # Quick start in Detached mode
