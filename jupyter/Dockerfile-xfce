@@ -1,7 +1,7 @@
-FROM fzinfz/anaconda3 
+FROM fzinfz/jupyter 
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN apt update && apt install -y xfce4
+RUN apt update && apt install -y xfce4, vim
 
 RUN apt install -y tightvncserver
 ENV USER root
