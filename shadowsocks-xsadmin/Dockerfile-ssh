@@ -5,5 +5,7 @@ ENV RootPassword RootPassword
 
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword | bash -s ${SSH_PORT} ${RootPassword}
 
+RUN apt install -y vim
+
 # pycharm remote debugging
 RUN mkdir /root/PycharmProjects && ln -s /data/xsadmin_deploy/xsadmin /root/PycharmProjects/xsadmin
