@@ -1,13 +1,13 @@
 # Installed kernels
 - python 3.6.0+ (Include scrapy & DB clients: pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite)
 - python 2.7.13+
-- bash: bash_kernel & metakernel_bash ([Installed Tools](https://github.com/fzinfz/docker-images/blob/master/ubuntu/apt-install-tools.sh))
+- bash: bash_kernel & metakernel_bash ([Installed Tools](https://github.com/fzinfz/scripts/blob/master/install-tools.sh))
 
 ## To install more kernels
 https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages
 
-### My docker images (nodejs, jvm, and more coming)
-https://github.com/fzinfz/docker-images/tree/master/jupyter
+### images adding nodejs & jvm kernels
+https://hub.docker.com/r/fzinfz/jupyter/
 
 # Quick start in Detached mode
 ```
