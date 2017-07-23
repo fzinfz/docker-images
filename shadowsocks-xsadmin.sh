@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec 6<>/dev/tcp/127.0.0.1/6379  || echo "redis is not running!"
+echo make sure mysql and redis are running
 
 n=$(basename $0 .sh)
 docker stop $n 
@@ -40,5 +40,7 @@ docker run --name $n \
 	-e Mysql_Password=$Password \
 	-e IP_MYSQL=$IP_MYSQL \
 	-e ALLOWED_HOST=$ALLOWED_HOST \
+	-e GEE_ID=$GEE_ID \
+	-e GEE_KEY=$GEE_KEY \
 	fzinfz/shadowsocks-xsadmin $cmd
 

@@ -60,7 +60,7 @@ case $n in
   redis )
 	i="redis"
 	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
-	cmd="redis-server --appendonly yes"
+	cmd="redis-server --appendonly yes --bind 127.0.0.1"
 	;;
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"

@@ -14,7 +14,7 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '05bk@wyb%nm2-=59n08-mu@^t7+#%x$^kk8_%pm_wcnq6ga!2='
 
-ALLOWED_HOSTS = (os.environ.get('ALLOWED_HOST','0.0.0.0') , '172.17.0.1',)
+ALLOWED_HOSTS = (os.environ.get('ALLOWED_HOST','*') , '172.17.0.1',)
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
@@ -42,6 +42,6 @@ INIT_TRANS_ENABLE = 6*1073741824 #默认是6G的流量
 STATIC_ROOT = "/data/xsadmin_deploy/static/"
 MEDIA_ROOT = '/data/xsadmin_deploy/upload/'
 #极验证
-GEE_CAPTCHA_ID = 'b46d1900d0a894591916ea94ea91bd2c'
-GEE_PRIVATE_KEY = '36fc3fe98530eea08dfc6ce76e3d24c4'
+GEE_CAPTCHA_ID = os.environ.get('GEE_ID', 'b46d1900d0a894591916ea94ea91bd2c')
+GEE_PRIVATE_KEY = os.environ.get('GEE_KEY','36fc3fe98530eea08dfc6ce76e3d24c4')
 
