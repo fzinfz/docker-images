@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z ${IP_Private+x} ];then
+	IP_Private=0.0.0.0 
+fi
+
 if [ -z ${1+x} ]; then
 cat << EOF 
 cat script for usage.
@@ -36,11 +40,22 @@ case $n in
 	;;
   mysql5 )
 	i="mysql:5"
+	if [ -z ${Password+x} ];then
+		echo 'export $Password'
+	fi
 	mode="$mode_d --net host -v $(pwd)/../docker-data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=$Password"
+	;;
+  mariadb )
+	i="mariadb"
+        if [ -z ${Password+x} ];then
+                echo 'export $Password'
+        fi
+	mode="$mode_d --net host -v $(pwd)/../docker-data/mariadb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=$Password"
+	cmd="--bind-address=$IP_MYSQL"
 	;;
   pma | phpmyadmin )
 	i="phpmyadmin/phpmyadmin"
-	mode="$mode_d --add-host=db:$IP_MYSQL -p 81:80"
+	mode="$mode_d --add-host=db:$IP_MYSQL -p $IP_Private:81:80"
 	;;
   redis )
 	i="redis"
