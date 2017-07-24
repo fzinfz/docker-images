@@ -6,3 +6,7 @@ ENV USER root
 
 # chromium start error: Failed to move to new namespace
 # xrdp - win10/7 client error: 0x2104
+
+ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt
+RUN sed -i 's/==/>=/' requirements.txt
+RUN pip install -r requirements.txt 
