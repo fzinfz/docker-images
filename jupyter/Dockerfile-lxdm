@@ -1,0 +1,18 @@
+FROM fzinfz/jupyter 
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+RUN apt update && apt install -y lxdm tightvncserver vim firefox-esr
+ENV USER root
+
+RUN apt install -y chromium xrdp
+
+ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt .
+RUN sed -i 's/==/>=/' requirements.txt && \
+    while read requirement; do conda install --yes $requirement; done < requirements.txt && \
+    rm requirements.txt 
+    
+ENV SSH_PORT 2202
+ENV RootPassword RootPassword
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword | bash -s ${SSH_PORT} ${RootPassword}    
+    
+    

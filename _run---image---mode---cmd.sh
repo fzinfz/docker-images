@@ -43,6 +43,11 @@ case $n in
 	mode="$mode_d --net host"
 	cmd="iperf3 -B $IP_Private -s"
 	;;
+  miniconda | conda )
+	i="continuumio/miniconda"
+	mode="--rm -it -v $(pwd)/../docker-data/conda_envs:/opt/conda/envs/ -w /opt/conda/envs"
+	cmd="/bin/bash"
+	;;
   mysql5 )
 	i="mysql:5"
 	if [ -z ${Password+x} ];then
