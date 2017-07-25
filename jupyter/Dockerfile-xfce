@@ -8,6 +8,6 @@ ENV USER root
 # xrdp - win10/7 client error: 0x2104
 
 ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt .
-RUN sed -i 's/==/>=/' /tmp/requirements.txt && \
+RUN sed -i 's/==/>=/' requirements.txt && \
     while read requirement; do conda install --yes $requirement; done < requirements.txt && \
     rm requirements.txt 
