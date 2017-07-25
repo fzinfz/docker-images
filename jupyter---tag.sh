@@ -13,7 +13,7 @@ docker rm $n
 
 docker run --name $n \
     --net host \
-    -v $(pwd)/../:/host \
+    -v /:/host \
     -e GEN_CERT=yes  \
     --restart unless-stopped \
     -d fzinfz/$image \
