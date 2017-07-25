@@ -4,12 +4,15 @@ n=$(basename $0 .sh)
 docker stop $n 
 docker rm $n
 
-mode='-d --restart unless-stopped'
+mode_d='-d --restart unless-stopped'
+mode_i='--rm -it'
 
 docker run --name $n \
 	--net host \
-	$mode  \
+	--cap-add=NET_ADMIN \
+	$mode_d  \
 	-v $(pwd)/shadowsocks-xsadmin.conf.d/config_xsadmin.py:/shadowsocksr/config_xsadmin.py \
+	-v $(pwd)/shadowsocks-xsadmin.conf.d/user-config-origin.json:/shadowsocksr/user-config.json \
 	-e SS_XSADMIN_HOST_PORT=$SS_XSADMIN_HOST_PORT \
 	-e SS_XSADMIN_API_KEY=$SS_XSADMIN_API_KEY \
 	-e SS_XSADMIN_API_SECRET=$SS_XSADMIN_API_SECRET \

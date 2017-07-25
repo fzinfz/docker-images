@@ -11,7 +11,7 @@ Examples:
 	./_run.sh alpine -it sh
 	./_run.sh python "--rm -it --net host"
 	./_run.sh nginx "-d --net host"
-	./_run.sh rabbitmq/amqp/ubuntu/...(pre-defined docker run, check script for details)
+	./_run.sh rabbitmq/amqp/...(pre-defined docker run, check script for details)
 	
 EOF
 exit 1
@@ -33,10 +33,15 @@ case $n in
 	i="relaxart/rabbitmq-server"
 	mode="$mode_d --host host"
 	;;
-  ubuntu ) 
-	i="fzinfz/ubuntu"
+  tools ) 
+	i="fzinfz/tools"
 	mode="--rm -it --net host -v /:/host"
 	cmd="/bin/bash"
+	;;
+  iperf | iperf3 )
+        i="fzinfz/tools"
+	mode="$mode_d --net host"
+	cmd="iperf3 -B $IP_Private -s"
 	;;
   mysql5 )
 	i="mysql:5"
