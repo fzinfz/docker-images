@@ -13,6 +13,6 @@ RUN sed -i 's/==/>=/' requirements.txt && \
     
 ENV SSH_PORT 2202
 ENV RootPassword RootPassword
-RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword | bash -s ${SSH_PORT} ${RootPassword}    
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}    
     
-    
+# /usr/bin/startlxde : vnc blank    

@@ -26,7 +26,7 @@ docker stop $n
 docker rm $n
 
 mode_d='-d --restart unless-stopped'
-mode_privileged='--privileged --cap-add=ALL -it -v /dev:/dev -v /lib/modules:/lib/modules'
+mode_privileged='--privileged --cap-add=ALL -it -v /dev:/dev -v /lib/modules:/lib/modules --pid=host --ipc=host'
 
 case $n in
   rabbitmq | amqp ) 
@@ -35,7 +35,7 @@ case $n in
 	;;
   tools ) 
 	i="fzinfz/tools"
-	mode="--rm -it --net host -v /:/host"
+	mode="--rm -it $docker_run_host"
 	cmd="/bin/bash"
 	;;
   iperf | iperf3 )

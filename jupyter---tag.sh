@@ -11,9 +11,12 @@ echo $n
 docker stop $n 
 docker rm $n
 
+if [[ -z $docker_run_host ]]; then
+	echo 'WARNING: $docker_run_host not set'
+fi
+
 docker run --name $n \
-    --net host \
-    -v /:/host \
+    $docker_run_host \
     -e GEN_CERT=yes  \
     --restart unless-stopped \
     -d fzinfz/$image \
