@@ -1,7 +1,7 @@
 FROM fzinfz/jupyter 
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN apt update && apt install -y lxdm tightvncserver vim firefox-esr
+RUN apt update && apt install -y lxde tightvncserver vim firefox-esr
 ENV USER root
 
 RUN apt install -y chromium xrdp

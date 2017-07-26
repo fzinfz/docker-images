@@ -21,9 +21,10 @@ RUN /bin/bash -c "source activate py27 && \
 
 # DB support for Python 3
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
+RUN apt-get install -y libmysqlclient-dev
 
-# scrapy
-RUN  conda install -y scrapy
+# More
+RUN  conda install -y scrapy django 
 
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/

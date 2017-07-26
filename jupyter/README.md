@@ -1,4 +1,4 @@
-# Available kernels
+# kernels
 ```
   kotlin             /root/.ipython/kernels/kotlin
   javascript         /root/.local/share/jupyter/kernels/javascript
@@ -10,3 +10,6 @@
 
 # Dockerfile
 https://github.com/fzinfz/docker-images/tree/master/jupyter
+
+# Notes for `xfce` image
+run `tightvncserver` manually to start vnc server.
