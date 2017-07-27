@@ -1,0 +1,11 @@
+FROM fzinfz/shadowsocks-xsadmin
+
+ENV SSH_PORT 2203
+ENV RootPassword RootPassword
+
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
+
+RUN apt install -y vim
+
+# pycharm remote debugging
+RUN mkdir /root/PycharmProjects && ln -s /data/xsadmin_deploy/xsadmin /root/PycharmProjects/xsadmin

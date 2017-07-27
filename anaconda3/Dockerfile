@@ -21,9 +21,10 @@ RUN /bin/bash -c "source activate py27 && \
 
 # DB support for Python 3
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
+RUN apt-get install -y libmysqlclient-dev
 
-# scrapy
-RUN  conda install -y scrapy
+# More
+RUN  conda install -y scrapy django 
 
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
@@ -36,7 +37,17 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # Linux Tools for shell
-ADD ../ubuntu/apt-install-tools.sh .
-RUN sh apt-install-tools.sh
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.sh | bash
+
+# sshd for IDE remote debugging
+ENV SSH_PORT 2222
+ENV RootPassword MyRootPassword
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
+
+# custom python packages 
+ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt .
+RUN sed -i 's/==/>=/' requirements.txt && \
+    while read requirement; do conda install --yes $requirement; done < requirements.txt && \
+    rm requirements.txt
 
 EXPOSE 8888

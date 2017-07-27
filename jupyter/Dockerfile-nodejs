@@ -1,13 +1,5 @@
 FROM fzinfz/anaconda3 
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-# https://github.com/n-riesco/ijavascript
-RUN /bin/bash -c "source activate py27 && \
-    curl -sL https://deb.nodesource.com/setup_6.x |bash - && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
-    source deactivate py27"
-
-RUN /bin/bash -c " \
-    npm install --unsafe-perm -g ijavascript && \
-    ijs --ijs-install=local && \
-    jupyter-kernelspec install /root/.local/share/jupyter/kernels/javascript" 
+RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/jupyter/install-kernel-nodejs.sh | bash
+WORKDIR /_nodejs

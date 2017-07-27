@@ -1,0 +1,9 @@
+FROM fzinfz/jupyter 
+MAINTAINER Ferro Fang <fzinfz@gmail.com>
+
+ENV USER root
+RUN apt update && apt install -y i3 rxvt \
+	 tightvncserver xrdp \
+	firefox-esr chromium 
+
+ADD i3wm-vnc.sh .

@@ -1,0 +1,3 @@
+FROM centos
+
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.sh | bash

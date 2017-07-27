@@ -9,4 +9,5 @@ WORKDIR shadowsocksr
 
 RUN apk --no-cache add libsodium
 RUN pip install requests
+RUN python setup.py build && python setup.py install
 
