@@ -51,6 +51,14 @@ case $n in
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"
 	cmd="sh -c \"gcloud auth activate-service-account --key-file=/key.json && sleep infinity\""
 	;;
+  unifi )
+	i="linuxserver/unifi"
+	mode="$mode_d -v $(pwd)/../docker-data/unifi:/config -e PGID=10001 -e PUID=10001 --net host"
+	;;
+  softether )
+	i="siomiz/softethervpn"
+	mode="$mode_d --cap-add NET_ADMIN --net host"
+	;;
   * )
 	i=$1
 	mode=$2
@@ -58,6 +66,7 @@ case $n in
 		shift 2
 		cmd="sh -c \"$*\""
 	fi
+	;;
 esac
 
 docker_run="docker run --name $n $mode $i $cmd"
