@@ -17,6 +17,7 @@ fi
 
 docker run --name $n \
     $docker_run_host \
+    --add-host="$(hostname):127.0.1.1" \
     -e GEN_CERT=yes  \
     --restart unless-stopped \
     -d fzinfz/$image \

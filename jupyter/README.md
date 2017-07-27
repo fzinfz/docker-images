@@ -1,4 +1,7 @@
-# kernels
+# Image base & basic usage
+https://hub.docker.com/r/fzinfz/anaconda3/
+
+# Kernels
 ```
   kotlin             /root/.ipython/kernels/kotlin
   javascript         /root/.local/share/jupyter/kernels/javascript

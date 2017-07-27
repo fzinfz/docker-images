@@ -12,7 +12,7 @@ https://hub.docker.com/r/fzinfz/jupyter/
 # Quick start in Detached mode
 ```
 docker run --name jupyter -p 8899:8888 -d fzinfz/anaconda3 \
-    jupyter notebook --ip=*
+    jupyter notebook --ip=* --allow-root
 ```
 Visit: http://server_address:8899
 
@@ -24,7 +24,7 @@ docker run --name jupyter \
     -e GEN_CERT=yes  \
     --restart unless-stopped \
     -d fzinfz/anaconda3 \
-    jupyter notebook  --ip=*
+    jupyter notebook  --ip=* --allow-root
 ```    
 Visit: https://server_address:8888
 
@@ -33,3 +33,7 @@ Visit: https://server_address:8888
 
 # Attach container
 `docker exec -it jupyter /bin/bash`
+
+# Start sshd
+`docker exec -it jupyter /usr/sbin/sshd`
+on client: `ssh -p 2222 root@$IP_Jupyter_Server` (root password: MyRootPassword)
