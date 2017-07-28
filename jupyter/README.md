@@ -22,7 +22,8 @@ i3wm:	all kernels + vnc + i3wm + firefox + chromium
 https://github.com/fzinfz/docker-images/tree/master/jupyter
 
 # Notes for `xfce` image
-run `tightvncserver` manually to start vnc server.
+Run `tightvncserver` manually to start vnc server.
 
 # Notes for `i3wm` image
-run `/i3wm-vnc-init.sh` manually to setup vnc server.
+Run `/i3wm-vnc-init.sh` manually to setup vnc server.
+Press `Alt` + `Enter` to start terminal, then type `bash` to use bash shell.

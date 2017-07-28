@@ -48,6 +48,7 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--po
 ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt .
 RUN sed -i 's/==/>=/' requirements.txt && \
     while read requirement; do conda install --yes $requirement; done < requirements.txt && \
+    while read requirement; do pip install $requirement; done < requirements.txt && \
     rm requirements.txt
 
 EXPOSE 8888

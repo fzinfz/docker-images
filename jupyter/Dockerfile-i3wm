@@ -5,6 +5,7 @@ ENV USER root
 RUN apt update && apt install -y i3 rxvt \
 	 tightvncserver xrdp \
 	firefox-esr chromium 
+# xrdp not work, error: 0x2104
 
 ADD i3wm-vnc-init.sh .
 RUN chmod +x *.sh
