@@ -48,7 +48,7 @@ case $n in
 	mode="--rm -it -v $(pwd)/../docker-data/conda_envs:/opt/conda/envs/ -w /opt/conda/envs"
 	cmd="/bin/bash"
 	;;
-  mysql5 )
+  mysql | mysql5 )
 	i="mysql:5"
 	if [ -z ${Password+x} ];then
 		echo 'export $Password'
@@ -76,6 +76,20 @@ case $n in
 	i="fzinfz/cloud-sdk:gcloud"
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"
 	cmd="sh -c \"gcloud auth activate-service-account --key-file=/key.json && sleep infinity\""
+	;;
+  unifi )
+        i="linuxserver/unifi"
+        mode="-v /root/data/docker-images/../docker-data/unifi:/config -e PGID=10001 -e PUID=10001 --net host"
+        ;;
+  softether )
+        i="siomiz/softethervpn"
+        mode="--cap-add NET_ADMIN --net host"
+        ;;
+  netdata )
+	# https://hub.docker.com/r/titpetric/netdata/
+	# Http Port: 19999
+	i="titpetric/netdata"
+	mode="$mode_d --net host --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro"
 	;;
   * )
 	i=$1

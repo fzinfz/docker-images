@@ -21,8 +21,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'xsadmin',
-        'USER':'mysql',
-        'PASSWORD': os.environ.get('Mysql_Password',''),
+        'USER':'xsadmin',
+        'PASSWORD': os.environ.get('Mysql_Password','xsadmin'),
         'HOST': os.environ.get('IP_MYSQL', '127.0.0.1'),
         'PORT':'3306'
     }

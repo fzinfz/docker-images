@@ -2,17 +2,21 @@
 
 echo make sure mysql and redis are running
 
+if [ -z $IP_Private ];then
+	IP_Private=0.0.0.0
+fi
+
+if [ -z $IP_MYSQL ];then
+	IP_MYSQL=127.0.0.1
+fi
+
+if [ -z $Password ];then
+	Password="xsadmin"
+fi
+
 n=$(basename $0 .sh)
 docker stop $n 
 docker rm $n
-
-if [ -z $1 ]; then
-	db="mysql"
-else
-	db=$1
-fi
-
-shift
 
 mode="--rm -it"
 mode_d='-d --restart unless-stopped'
@@ -36,11 +40,11 @@ fi
 docker run --name $n \
 	--net host \
 	$mode \
-	-v $(pwd)/shadowsocks-xsadmin.conf.d/settings_$db.py:/data/xsadmin_deploy/xsadmin/xsadmin/settings_custom.py:rw \
+	-v $(pwd)/shadowsocks-xsadmin.conf.d/settings_mysql.py:/data/xsadmin_deploy/xsadmin/xsadmin/settings_custom.py:rw \
 	-e Mysql_Password=$Password \
 	-e IP_MYSQL=$IP_MYSQL \
 	-e ALLOWED_HOST=$ALLOWED_HOST \
 	-e GEE_ID=$GEE_ID \
 	-e GEE_KEY=$GEE_KEY \
-	fzinfz/shadowsocks-xsadmin $cmd
+	fzinfz/shadowsocks-xsadmin:ssh $cmd
 

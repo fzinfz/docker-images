@@ -23,6 +23,7 @@ https://github.com/fzinfz/docker-images/tree/master/jupyter
 
 # Notes for `xfce` image
 Run `tightvncserver` manually to start vnc server.
+Fix `Tab` not working: `Application Menu` -> `Settings` -> `Window Manager` -> `Keyboard`: clear `Switch window for same application`
 
 # Notes for `i3wm` image
 Run `/i3wm-vnc-init.sh` manually to setup vnc server.
