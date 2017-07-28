@@ -35,5 +35,5 @@ Visit: https://server_address:8888
 `docker exec -it jupyter /bin/bash`
 
 # Start sshd
-`docker exec -it jupyter /usr/sbin/sshd`
+`docker exec -it jupyter /usr/sbin/sshd`  
 on client: `ssh -p 2222 root@$IP_Jupyter_Server` (root password: MyRootPassword)
