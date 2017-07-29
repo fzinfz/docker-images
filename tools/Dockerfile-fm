@@ -1,0 +1,4 @@
+FROM php:5-apache
+
+ADD https://downloads.sourceforge.net/project/phpfm/phpFileManager/version%201.0/phpFileManager-1.0.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fphpfm%2Ffiles%2FphpFileManager%2Fversion%25201.0%2F&ts=1501343226&use_mirror=nchc .
+RUN apt update && apt install -y unzip && unzip phpFileManager-1.0.zip -d /var/www/html/ && rm -r /var/lib/apt/lists/*
