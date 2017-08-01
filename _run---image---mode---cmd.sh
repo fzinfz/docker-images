@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./init.sh
+
 if [ -z ${IP_Private+x} ];then
 	IP_Private=0.0.0.0 
 fi
@@ -24,9 +26,6 @@ n=${1##*/}
 echo "container name: $n"
 docker stop $n 
 docker rm $n
-
-mode_d='-d --restart unless-stopped'
-mode_privileged='--privileged --cap-add=ALL -it -v /dev:/dev -v /lib/modules:/lib/modules --pid=host --ipc=host'
 
 case $n in
   rabbitmq | amqp ) 
@@ -90,6 +89,10 @@ case $n in
 	# Http Port: 19999
 	i="titpetric/netdata"
 	mode="$mode_d --net host --cap-add SYS_PTRACE -v /proc:/host/proc:ro -v /sys:/host/sys:ro"
+	;;
+  phpfm | fm )
+	i="fzinfz/tools:fm"
+	mode="$mode_d $mode_host"
 	;;
   * )
 	i=$1
