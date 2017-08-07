@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/fzinfz/anaconda3.svg)](https://microbadger.com/images/fzinfz/anaconda3 "Get your own image badge on microbadger.com")
+
 # Installed kernels
 - python 3.6.0+ (Include scrapy & DB clients: pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite)
 - python 2.7.13+

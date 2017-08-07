@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/fzinfz/freeradius.svg)](https://microbadger.com/images/fzinfz/freeradius "Get your own image badge on microbadger.com")
+
 # Dockerfile
 https://github.com/fzinfz/docker-images/tree/master/freeradius
 

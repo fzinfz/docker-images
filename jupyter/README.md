@@ -12,11 +12,11 @@ https://hub.docker.com/r/fzinfz/anaconda3/
 ```
 
 # Tags
-latest:	all kernels  
-nodejs:	python 2/3 + bash + nodejs  
-jvm: 	python 2/3 + bash + kotlin  
-xfce:	all kernels + vnc + xfce + firefox  
-i3wm:	all kernels + vnc + i3wm + firefox + chromium  
+latest:	all kernels [![](https://images.microbadger.com/badges/image/fzinfz/jupyter.svg)](https://microbadger.com/images/fzinfz/jupyter "Get your own image badge on microbadger.com") 
+nodejs:	python 2/3 + bash + nodejs [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:nodejs.svg)](https://microbadger.com/images/fzinfz/jupyter:nodejs "Get your own image badge on microbadger.com") 
+jvm: 	python 2/3 + bash + kotlin  [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:jvm.svg)](https://microbadger.com/images/fzinfz/jupyter:jvm "Get your own image badge on microbadger.com")
+xfce:	all kernels + vnc + xfce + firefox  [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:xfce.svg)](https://microbadger.com/images/fzinfz/jupyter:xfce "Get your own image badge on microbadger.com")
+i3wm:	all kernels + vnc + i3wm + firefox + chromium  [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:i3wm.svg)](https://microbadger.com/images/fzinfz/jupyter:i3wm "Get your own image badge on microbadger.com")
 
 # Dockerfile
 https://github.com/fzinfz/docker-images/tree/master/jupyter

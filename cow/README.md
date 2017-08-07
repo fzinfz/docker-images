@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/fzinfz/cow.svg)](https://microbadger.com/images/fzinfz/cow "Get your own image badge on microbadger.com")
+
 Dockerfile: https://github.com/fzinfz/docker-images/blob/master/cow/Dockerfile
 
 COW source code: https://github.com/cyfdecyf/cow/
