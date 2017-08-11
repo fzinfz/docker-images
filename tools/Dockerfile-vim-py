@@ -1,0 +1,4 @@
+FROM fedeg/python-vim
+
+WORKDIR /src
+ENTRYPOINT ["vim"]

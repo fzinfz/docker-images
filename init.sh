@@ -6,3 +6,4 @@ export mode_host=$docker_run_host
 
 export dockerfile_apt='--no-install-recommends && rm -r /var/lib/apt/lists/*'
 
+alias vim-py='docker run -it --rm -v $(pwd):/src fzinfz/tools:vim-py'

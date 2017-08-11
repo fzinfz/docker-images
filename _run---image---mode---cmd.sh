@@ -94,6 +94,10 @@ case $n in
 	i="fzinfz/tools:fm"
 	mode="$mode_d $mode_host"
 	;;
+  vi | vim | vim-py ) 
+        i="abrahammouse/python-vim-ide"
+        mode="--rm -it -v /:/host"
+        ;;
   * )
 	i=$1
 	mode=$2
