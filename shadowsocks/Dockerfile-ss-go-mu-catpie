@@ -1,0 +1,8 @@
+FROM golang:1.8
+
+RUN go get -v github.com/catpie/ss-go-mu
+
+WORKDIR /go/src/github.com/catpie/ss-go-mu
+RUN mv example.toml config.toml
+
+CMD /go/bin/ss-go-mu 

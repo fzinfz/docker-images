@@ -1,6 +1,9 @@
 import os,platform
 # 导入自定义设定文件
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # DEBUG设置
 DEBUG = True
 
@@ -14,17 +17,10 @@ DATABASES = {
 # 邮件服务设置：
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-
 # SS面板设置：
 GB = 1024 * 1024 * 1024
 DEFAULT_TRAFFIC = 5 * GB
 START_PORT = 10000
-
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -35,7 +31,7 @@ SECRET_KEY = '#d$3kz$u_qb26y+idj#kf7$)wcl)j%6vfjvd@poqy(vvxj#8o9'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

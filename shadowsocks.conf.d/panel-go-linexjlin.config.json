@@ -1,0 +1,14 @@
+{
+	"SSPortStartWith":50000,
+	"UserIdStartWith":10000,
+	"DefaultTraffic":1073741824,
+	"DefaultCycle":30,
+	"SiteName":"exmaple.com",
+	"SiteLink":"http://example.com",
+	"MailGun":{
+		"Sender":"noreply@exmaple.com",
+		"Domain":"exmaple.com",
+		"ApiKey":"key-xxxxxxx",
+		"PublicApiKey":"pub-xxxxxxx"
+	}
+}

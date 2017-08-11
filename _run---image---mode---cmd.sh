@@ -66,11 +66,16 @@ case $n in
 	i="phpmyadmin/phpmyadmin"
 	mode="$mode_d --add-host=db:$IP_MYSQL -p $IP_Private:81:80"
 	;;
-  redis )
+  redis ) 
+	i="redis"
+	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
+	cmd="redis-server --unixsocket /data/redis.sock --unixsocketperm 755" # sock + http
+	;;
+  redis_http )
 	i="redis"
 	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
 	cmd="redis-server --appendonly yes --bind 127.0.0.1"
-	;;
+	;; 	
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"

@@ -1,0 +1,12 @@
+[base]
+sync_time = 60
+
+[web_api]
+base_url = "http://127.0.0.1:8000"
+token = "token"
+node_id = 1
+
+[redis]
+host = "127.0.0.1:6379"
+pass = ""
+db = 1

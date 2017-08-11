@@ -1,0 +1,9 @@
+FROM python:3.4
+
+ENV port 5000
+ENV host 0.0.0.0
+
+RUN pip install httpbin
+CMD python -m httpbin.core --port=$port --host=$host
+
+# to fix: installed version 0.5 but webpage shows 0.2
