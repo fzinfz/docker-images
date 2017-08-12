@@ -94,12 +94,8 @@ case $n in
 	i="fzinfz/tools:fm"
 	mode="$mode_d $mode_host"
 	;;
-  ss )
-	i="fzinfz/tools:ss"
-	mode="$mode_i --net host"
-	;;
-  ss-libev )
-	i="mritd/shadowsocks"
+  ss | ss-libev )
+	i="fzinfz/shadowsocks:ssmanager-sorz"
 	mode="$mode_i --net host --entrypoint=/bin/sh"
 #	cmd=
 	;;
