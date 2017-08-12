@@ -32,11 +32,6 @@ case $n in
 	i="relaxart/rabbitmq-server"
 	mode="$mode_d --host host"
 	;;
-  tools ) 
-	i="fzinfz/tools"
-	mode="--rm -it $docker_run_host"
-	cmd="/bin/bash"
-	;;
   iperf | iperf3 )
         i="fzinfz/tools"
 	mode="$mode_d --net host"
@@ -99,10 +94,25 @@ case $n in
 	i="fzinfz/tools:fm"
 	mode="$mode_d $mode_host"
 	;;
-  vi | vim | vim-py ) 
-        i="abrahammouse/python-vim-ide"
-        mode="--rm -it -v /:/host"
-        ;;
+  ss )
+	i="fzinfz/tools:ss"
+	mode="$mode_i --net host"
+	;;
+  ss-libev )
+	i="mritd/shadowsocks"
+	mode="$mode_i --net host --entrypoint=/bin/sh"
+#	cmd=
+	;;
+  ss-manager-libev )
+	i="easypi/shadowsocks-libev"
+	mode="$mode_d --net host"
+	cmd="ss-manager -m aes-256-cfb -u --manager-address 127.0.0.1:6001"
+	;;
+  ss-manager-py )
+	i="ritou11/docker-shadowsocks"
+	mode="$mode_d --net host --entrypoint=/bin/sh"
+#	cmd="ssserver -m aes-256-cfb --manager-address 127.0.0.1:7001"  # not work, ssserver is client of ssmanager here
+	;;
   * )
 	i=$1
 	mode=$2

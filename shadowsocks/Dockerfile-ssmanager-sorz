@@ -1,0 +1,8 @@
+FROM python:3-stretch
+
+# install ss libev
+RUN echo "deb http://deb.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/stretch-backports.list && \
+	apt update && apt -t stretch-backports install shadowsocks-libev -y
+
+# install ss manager
+RUN pip install git+https://github.com/sorz/ssmanager.git

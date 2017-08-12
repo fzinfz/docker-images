@@ -6,4 +6,4 @@ https://github.com/fzinfz/scripts/blob/master/install-tools.sh
 
 ## Exceptions
 Tag `fm`: http://phpfm.sourceforge.net/
-
+Tag `httpbin`: https://github.com/kennethreitz/httpbin 

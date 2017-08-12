@@ -5,7 +5,7 @@ FROM python:2-alpine
 ENV WEB_CONCURRENCY=4
 
 # ADD . /httpbin
-RUN apk --no-cache add git && cd / && git clone https://github.com/kennethreitz/httpbin.git
+RUN apk --no-cache add git && cd / && git clone https://github.com/kennethreitz/httpbin.git && apk del git
 
 RUN apk add -U ca-certificates libffi libstdc++ && \
     apk add --virtual build-deps build-base libffi-dev && \
