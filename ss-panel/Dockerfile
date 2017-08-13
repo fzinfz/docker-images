@@ -1,7 +1,6 @@
 FROM richarvey/nginx-php-fpm:php5
-# MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN git clone https://github.com/orvice/ss-panel.git 
+RUN git clone -b master https://github.com/orvice/ss-panel.git 
 
 WORKDIR  /ss-panel 
 
