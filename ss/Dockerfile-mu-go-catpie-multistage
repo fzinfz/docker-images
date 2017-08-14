@@ -1,0 +1,11 @@
+FROM golang:1.8 as builder
+
+RUN CGO_ENABLED=0 GOOS=linux go get -d -v github.com/catpie/ss-go-mu
+
+FROM alpine
+
+COPY --from=builder /go/bin/ss-go-mu /root/ 
+COPY --from=builder /go/src/github.com/catpie/ss-go-mu/example.toml /root/config.toml
+
+WORKDIR /root/
+

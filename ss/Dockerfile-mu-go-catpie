@@ -1,8 +1,9 @@
-FROM golang:1.8
+FROM golang:1.8 as builder
 
 RUN go get -v github.com/catpie/ss-go-mu
 
-WORKDIR /go/src/github.com/catpie/ss-go-mu
-RUN mv example.toml config.toml
+RUN mv /go/src/github.com/catpie/ss-go-mu/example.toml /go/bin/config.toml
 
-CMD /go/bin/ss-go-mu 
+WORKDIR /go/bin/
+
+CMD ['./ss-go-mu']
