@@ -1,0 +1,9 @@
+FROM python:2
+
+RUN pip install Django==1.8 pycrypto
+
+RUN git clone -b master https://github.com/GameXG/shadowsocks_admin.git
+
+WORKDIR /shadowsocks_admin/master_node
+
+
