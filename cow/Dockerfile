@@ -3,7 +3,8 @@ FROM golang as builder
 RUN go get -v github.com/cyfdecyf/cow
 
 
-FROM debian 
+FROM debian
+# alpine test fail: /bin/sh: ./cow: not found
 
 RUN mkdir /root/.cow
 WORKDIR /root/.cow/
