@@ -10,4 +10,4 @@ https://github.com/alishtory/shadowsocksr
 ## Notes
 This image removed virtualenv/supervisor support.
 
-Another django ss panel: [fzinfz/django:sspanel](https://hub.docker.com/r/fzinfz/django/)
+Other ss panels: https://hub.docker.com/r/fzinfz/ss-panel/
