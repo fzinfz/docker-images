@@ -71,6 +71,10 @@ case $n in
 	mode="$mode_d --net host -v $(pwd)/../docker-data/redis:/data"
 	cmd="redis-server --appendonly yes --bind 127.0.0.1"
 	;; 	
+  mongo | mongodb )
+	i="mongodb"
+	mode="$mode_d --net host -v $(pwd)/../docker-data/mongodb:/data/db mongo"
+	;;
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"

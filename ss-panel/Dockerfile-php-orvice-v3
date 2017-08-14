@@ -2,7 +2,9 @@ FROM richarvey/nginx-php-fpm
 
 RUN git clone -b master https://github.com/orvice/ss-panel.git 
 
-WORKDIR  /ss-panel 
+RUN chown www-data:www-data ./ss-panel
+USER www-data
+WORKDIR ./ss-panel
 
 RUN curl -sS https://getcomposer.org/installer | php && \
     php composer.phar  install
