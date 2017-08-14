@@ -1,10 +1,17 @@
-FROM golang
+FROM golang as builder
 
 RUN go get -v github.com/cyfdecyf/cow
 
-WORKDIR /go/bin
+
+FROM debian 
+
+RUN mkdir /root/.cow
+WORKDIR /root/.cow/
+
+COPY --from=builder /go/bin/cow .
 EXPOSE 7777
 
 # Any env variables started with an uncapitalized letter will be saved to rc file.
-ENTRYPOINT exec env | grep '^[a-z]' > rc && sed -i 's/=/ = /g' rc && cow -rc rc
+RUN echo "#!/bin/sh\nexec env | grep '^[a-z]' > rc && sed -i 's/=/ = /g' rc && ./cow \"\$*\" " > entrypoint.sh && chmod +x entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
 
