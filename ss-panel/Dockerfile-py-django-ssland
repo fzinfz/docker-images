@@ -5,11 +5,7 @@ FROM python:2.7
 ADD https://raw.githubusercontent.com/laobubu/ssland/universal/requirements.txt /
 RUN pip install -r /requirements.txt
 
-RUN mkdir /ssland
+RUN git clone https://github.com/laobubu/ssland.git
 WORKDIR /ssland
 
 ADD ssland.shadowsocks.json /etc/shadowsocks.json
-
-#  git clone https://github.com/laobubu/ssland.git
-#  docker run --net host --rm -it -v /root/data/docker-data/ssland/:/ssland fzinfz/ssland /bin/bash
-
