@@ -14,13 +14,13 @@ php: https://hub.docker.com/r/orvice/ss-panel/  (V4)
 https://hub.docker.com/r/gyteng/ssmgr/
 
 ## php
-https://github.com/sendya/shadowsocks-panel
-https://github.com/orvice/ss-panel
-https://github.com/esdeathlove/ss-panel-v3-mod
+https://github.com/sendya/shadowsocks-panel  
+https://github.com/orvice/ss-panel  
+https://github.com/esdeathlove/ss-panel-v3-mod  
 
 ## django
-https://github.com/alishtory/xsadmin
-https://github.com/Ehco1996/django-sspanel
-https://github.com/alishtory/xsadmin
-https://github.com/laobubu/ssland
-https://github.com/GameXG/shadowsocks_admin
+https://github.com/alishtory/xsadmin  
+https://github.com/Ehco1996/django-sspanel  
+https://github.com/alishtory/xsadmin  
+https://github.com/laobubu/ssland  
+https://github.com/GameXG/shadowsocks_admin  
