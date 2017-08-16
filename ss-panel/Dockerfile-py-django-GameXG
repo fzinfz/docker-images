@@ -3,6 +3,10 @@ FROM python:2
 RUN pip install Django==1.8 pycrypto
 
 RUN git clone -b master https://github.com/GameXG/shadowsocks_admin.git
+RUN cd shadowsocks_admin && \
+    mv config.py.example config.py && \
+    cp *.py master_node/ && \
+    sed -i "s/^AES_KEY.*/AES_KEY = \'myaeskey'/"  master_node/config.py
 
 WORKDIR /shadowsocks_admin/master_node
 
