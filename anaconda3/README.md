@@ -1,7 +1,8 @@
-[![](https://images.microbadger.com/badges/image/fzinfz/anaconda3.svg)](https://microbadger.com/images/fzinfz/anaconda3 "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/fzinfz/anaconda3.svg)](https://microbadger.com/images/fzinfz/anaconda3 "Get your own image badge on microbadger.com") 
+[Dockerfile](https://github.com/fzinfz/docker-images/blob/master/anaconda3/Dockerfile)
 
 # Installed kernels
-- python 3.6.0+ (Include scrapy & DB clients: pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite)
+- python 3.6.1+ (uwsgi gunicorn django flask bottle hug pyramid & common DB clients)
 - python 2.7.13+
 - bash: bash_kernel & metakernel_bash ([Installed Tools](https://github.com/fzinfz/scripts/blob/master/install-tools.sh))
 
@@ -36,6 +37,6 @@ Visit: https://server_address:8888
 # Attach container
 `docker exec -it jupyter /bin/bash`
 
-# Start sshd
+# Start sshd manually
 `docker exec -it jupyter /usr/sbin/sshd`  
 on client: `ssh -p 2222 root@$IP_Jupyter_Server` (root password: MyRootPassword)

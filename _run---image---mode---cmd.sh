@@ -72,8 +72,8 @@ case $n in
 	cmd="redis-server --appendonly yes --bind 127.0.0.1"
 	;; 	
   mongo | mongodb )
-	i="mongodb"
-	mode="$mode_d --net host -v $(pwd)/../docker-data/mongodb:/data/db mongo"
+	i="mongo"
+	mode="$mode_d --net host -v $(pwd)/../docker-data/mongodb:/data/db"
 	;;
   gcloud )
 	i="fzinfz/cloud-sdk:gcloud"
