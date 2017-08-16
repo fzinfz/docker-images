@@ -5,13 +5,13 @@ https://github.com/fzinfz/docker-images/tree/master/ss-panel
 https://hub.docker.com/r/fzinfz/ss/
 
 # Docker Images for other panels 
-django xsadmin: https://hub.docker.com/r/fzinfz/shadowsocks-xsadmin/  
-nodejs ssmgr: https://hub.docker.com/r/gyteng/ssmgr/  
+django: https://hub.docker.com/r/fzinfz/shadowsocks-xsadmin/  
+nodejs: https://hub.docker.com/r/gyteng/ssmgr/  
 php: https://hub.docker.com/r/orvice/ss-panel/  (V4)
 
 # Github projects
 ## nodejs
-https://hub.docker.com/r/gyteng/ssmgr/
+https://github.com/shadowsocks/shadowsocks-manager
 
 ## php
 https://github.com/sendya/shadowsocks-panel  
