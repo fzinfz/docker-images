@@ -9,9 +9,16 @@ Examples:
 	./build.sh ubuntu
 	./build.sh jupyter jvm
 EOF
-
-elif [ -z ${2+x} ]; then
-	docker build -t fzinfz/$1:latest $1 
-else
-	docker build -f $1/Dockerfile-$2 -t fzinfz/$1:$2 $1
+exit 
 fi
+
+if [ -z ${2+x} ]; then
+	cmd="docker build -t fzinfz/$1:latest $1"
+else
+	cmd="docker build -f $1/Dockerfile-$2 -t fzinfz/$1:$2 $1"
+fi
+
+echo $cmd
+eval $cmd
+
+
