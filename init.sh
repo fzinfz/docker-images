@@ -8,10 +8,12 @@ export mode_host=$docker_run_host
 
 cat << EOL
 dockerfile code snippets:
-apt install -y * --no-install-recommends && rm -r /var/lib/apt/lists/*'
 
-apk add --no-cache --virtual .build-deps'  && \
-&& apk del .build-deps
+RUN apt update && apt install -y 
+    --no-install-recommends && rm -r /var/lib/apt/lists/*
+
+RUN apk add --no-cache --virtual .build-deps'  
+    && apk del .build-deps
 EOL
 
 alias vim-py='docker run -it --rm -v $(pwd):/src fzinfz/tools:vim-py'

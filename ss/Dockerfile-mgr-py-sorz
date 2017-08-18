@@ -1,6 +1,0 @@
-FROM mritd/shadowsocks
-
-RUN apk add --no-cache python3 git
-RUN git clone https://github.com/sorz/ssmanager.git
-RUN apk add --no-cache vim
-WORKDIR ssmanager

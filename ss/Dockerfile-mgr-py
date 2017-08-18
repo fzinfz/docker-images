@@ -1,0 +1,7 @@
+FROM fzinfz/ss
+
+RUN pip3 install requests argparse git+https://github.com/sorz/ssmanager.git
+RUN git clone https://github.com/fzinfz/ssmanager-nopanel.git
+WORKDIR ./ssmanager-nopanel
+
+#RUN apt update && apt install -y vim --no-install-recommends && rm -r /var/lib/apt/lists/*

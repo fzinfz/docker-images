@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm
 
 RUN apk add --no-cache mysql-client     
 
-RUN git clone -b master https://github.com/orvice/ss-panel.git 
+RUN git clone -b v3 https://github.com/orvice/ss-panel.git 
 
 RUN chown -R www-data:www-data ./ss-panel
 USER www-data

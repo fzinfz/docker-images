@@ -50,5 +50,7 @@ RUN sed -i 's/==/>=/' requirements.txt && \
     while read requirement; do conda install --yes $requirement; done < requirements.txt && \
     while read requirement; do pip install $requirement; done < requirements.txt && \
     rm requirements.txt
+RUN pip install djangorestframework django-filter django-captcha-admin \
+	uwsgi gunicorn django flask bottle hug pyramid
 
 EXPOSE 8888
