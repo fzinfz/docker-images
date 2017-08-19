@@ -27,7 +27,7 @@ elif [ $1 = "dev" ];then
 	cmd="python manage.py runserver $IP_Private:82"
 	mode=$mode_d
 elif [ $1 = "run" ]; then
-	cmd="uwsgi --http $IP_Private:82 --master --processes 1 --threads 2 --wsgi-file xsadmin/wsgi.py"
+	cmd="uwsgi --http $IP_Private:82 --master --processes 1 --threads 2 --wsgi-file xsadmin/wsgi.py --check-static /data/xsadmin_deploy/xsadmin/static"
 	mode=$mode_d
 else
 	cmd=$*
