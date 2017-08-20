@@ -40,7 +40,7 @@ fi
 docker run --name $n \
 	--net host \
 	$mode \
-	-v $(pwd)/shadowsocks-xsadmin.conf.d/settings_mysql.py:/data/xsadmin_deploy/xsadmin/xsadmin/settings_custom.py:rw \
+	-v $(pwd)/panel-settings_mysql.py:/data/xsadmin_deploy/xsadmin/xsadmin/settings_custom.py:rw \
 	-e Mysql_Password=$Password \
 	-e IP_Private=$IP_Private \
 	-e IP_MYSQL=$IP_MYSQL \
