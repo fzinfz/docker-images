@@ -53,6 +53,6 @@ RUN sed -i 's/==/>=/' requirements.txt && \
 RUN pip install djangorestframework django-filter django-captcha-admin \
 	uwsgi gunicorn django flask bottle hug pyramid
 
-RUN apt-get install -y lsof
+RUN apt-get install -y lsof gettext
 
 EXPOSE 8888
