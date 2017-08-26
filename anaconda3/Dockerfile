@@ -23,14 +23,11 @@ RUN /bin/bash -c "source activate py27 && \
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
 RUN apt-get install -y libmysqlclient-dev
 
-# More
-RUN  conda install -y scrapy uwsgi gunicorn django flask bottle hug pyramid
-
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
 
 RUN conda config --add channels conda-forge 
-RUN conda install pika pyzmq
+RUN conda install -y pika pyzmq
 
 RUN /bin/bash -c "source activate py27 && \
     conda install pika pyzmq && \
@@ -43,5 +40,7 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.s
 ENV SSH_PORT 2222
 ENV RootPassword MyRootPassword
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
+
+RUN  pip install -y scrapy uwsgi gunicorn django flask bottle hug pyramid
 
 EXPOSE 8888

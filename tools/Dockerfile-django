@@ -7,5 +7,9 @@ RUN pip install django uwsgi \
 	django-qr-code pillow \
 	django-captcha-admin  django-simple-captcha django-recaptcha django-recaptcha2
 
+RUN apt update && apt -y install libz-dev libjpeg-dev libfreetype6-dev python3-dev
+
 VOLUME /src
+WORKDIR /src
+
 EXPOSE 8000
