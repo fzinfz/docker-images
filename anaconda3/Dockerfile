@@ -24,7 +24,7 @@ RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlit
 RUN apt-get install -y libmysqlclient-dev
 
 # More
-RUN  conda install -y scrapy django 
+RUN  conda install -y scrapy uwsgi gunicorn django flask bottle hug pyramid
 
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
@@ -43,16 +43,5 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.s
 ENV SSH_PORT 2222
 ENV RootPassword MyRootPassword
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
-
-# custom python packages 
-ADD https://raw.githubusercontent.com/alishtory/xsadmin/master/requirements.txt .
-RUN sed -i 's/==/>=/' requirements.txt && \
-    while read requirement; do conda install --yes $requirement; done < requirements.txt && \
-    while read requirement; do pip install $requirement; done < requirements.txt && \
-    rm requirements.txt
-RUN pip install djangorestframework django-filter django-captcha-admin \
-	uwsgi gunicorn django flask bottle hug pyramid
-
-RUN apt-get install -y lsof gettext
 
 EXPOSE 8888
