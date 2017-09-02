@@ -41,6 +41,6 @@ ENV SSH_PORT 2222
 ENV RootPassword MyRootPassword
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
 
-RUN  pip install -y scrapy uwsgi gunicorn django flask bottle hug pyramid
+RUN  pip install scrapy uwsgi gunicorn django flask bottle hug pyramid
 
 EXPOSE 8888
