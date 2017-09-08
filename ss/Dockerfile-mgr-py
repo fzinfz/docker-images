@@ -1,10 +1,7 @@
 FROM fzinfz/ss
 
-RUN pip3 install requests argparse \
-	git+https://github.com/fzinfz/ssmanager.git  # forked
-# git+https://github.com/sorz/ssmanager.git #official
+RUN pip3 install git+https://github.com/shadowsocks/shadowsocks.git@master && \
+    pip3 install git+https://github.com/sorz/ssmanager.git && \
+    pip3 install git+https://github.com/fzinfz/ssmanager-nopanel.git
 
-RUN git clone https://github.com/fzinfz/ssmanager-nopanel.git
-WORKDIR ./ssmanager-nopanel
-
-RUN apt update && apt install -y nano --no-install-recommends && rm -r /var/lib/apt/lists/*
+ENTRYPOINT ["ssmanager-nopanel"]

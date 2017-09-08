@@ -1,0 +1,4 @@
+FROM debian:9
+
+RUN echo "deb http://deb.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/stretch-backports.list && \
+	apt update && apt -y -t stretch-backports install shadowsocks-libev simple-obfs rng-tools

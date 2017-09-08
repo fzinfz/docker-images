@@ -3,3 +3,5 @@ FROM python:3
 RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
     apt update && apt install -y libsodium18 --no-install-recommends && rm -r /var/lib/apt/lists/*
 RUN pip3 install git+https://github.com/shadowsocks/shadowsocks.git@master
+
+CMD ["/bin/bash"]
