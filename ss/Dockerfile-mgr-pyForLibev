@@ -1,9 +1,0 @@
-FROM fzinfz/ss:libev
-
-RUN apt update && apt install -y python3 python3-pip git 
-RUN pip3 install git+https://github.com/shadowsocks/shadowsocks.git@master && \
-    pip3 install git+https://github.com/sorz/ssmanager.git && \
-    pip3 install git+https://github.com/fzinfz/ssmanager-nopanel.git
-
-ENTRYPOINT ["ssmanager-nopanel"]
-
