@@ -114,6 +114,10 @@ case $n in
 	mode="$mode_d --net host --entrypoint=/bin/sh"
 #	cmd="ssserver -m aes-256-cfb --manager-address 127.0.0.1:7001"  # not work, ssserver is client of ssmanager here
 	;;
+  sni | sniproxy )
+	i="mritd/sniproxy"
+	mode="$mode_d -p ${IP_Private}:443:443"
+	;;
   * )
 	i=$1
 	mode=$2
