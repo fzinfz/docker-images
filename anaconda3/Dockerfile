@@ -42,6 +42,7 @@ ENV RootPassword MyRootPassword
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--port--RootPassword.sh | bash -s ${SSH_PORT} ${RootPassword}
 
 RUN apt-get install -y build-essential python-dev
-# RUN pip install scrapy uwsgi gunicorn django flask bottle hug pyramid
+RUN conda upgrade -y anaconda
+RUN pip install scrapy uwsgi gunicorn django flask bottle hug pyramid
 
 EXPOSE 8888
