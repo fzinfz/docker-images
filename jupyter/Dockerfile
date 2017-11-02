@@ -3,3 +3,5 @@ MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
 RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/jupyter/install-kernel-jvm.sh | bash
 RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/jupyter/install-kernel-nodejs.sh | bash
+
+RUN apt install -y locales-all

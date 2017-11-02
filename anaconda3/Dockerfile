@@ -45,4 +45,6 @@ RUN apt-get install -y build-essential python-dev
 RUN conda upgrade -y anaconda
 RUN pip install scrapy uwsgi gunicorn django flask bottle hug pyramid
 
-EXPOSE 8888
+RUN apt-get install -y locales-all ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy
+
+EXPOSE 8888 2222
