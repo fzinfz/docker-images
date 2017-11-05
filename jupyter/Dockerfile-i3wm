@@ -11,3 +11,7 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-browser
 
 ADD i3wm-vnc-init.sh .
 RUN chmod +x *.sh
+
+RUN pip install ryu
+
+RUN apt install -y opam && opam init && opam install -y jupyter

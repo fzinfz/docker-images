@@ -8,7 +8,7 @@
 - bash: bash_kernel & metakernel_bash ([Installed Tools](https://github.com/fzinfz/scripts/blob/master/install-tools.sh))
 
 ## To install more kernels
-https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages
+https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
 
 ### Images adding nodejs/kotlin kernels + xfce/i3wm
 https://hub.docker.com/r/fzinfz/jupyter/
