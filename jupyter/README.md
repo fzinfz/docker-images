@@ -1,5 +1,5 @@
-# Base image & basic usages
-https://hub.docker.com/r/fzinfz/anaconda3/
+Base image & basic usages: https://hub.docker.com/r/fzinfz/anaconda3/  
+Dockerfile: https://github.com/fzinfz/docker-images/tree/master/jupyter  
 
 # Tags
 
@@ -8,9 +8,6 @@ https://hub.docker.com/r/fzinfz/anaconda3/
 `i3wm`:	based on `latest`, add 
 [ocaml](https://github.com/akabe/ocaml-jupyter) kernel & 
 chromium [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:i3wm.svg)](https://microbadger.com/images/fzinfz/jupyter:i3wm "Get your own image badge on microbadger.com")
-
-# Dockerfile
-https://github.com/fzinfz/docker-images/tree/master/jupyter
 
 # Quick start example for `i3wm` image
 ```

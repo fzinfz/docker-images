@@ -14,5 +14,7 @@ RUN chmod +x *.sh
 
 RUN pip install ryu
 
-RUN apt install -y opam && opam init --auto-setup && opam install -y jupyter
+RUN echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list && \
+    apt update && apt install -y opam && \
+    opam init --auto-setup && opam install -y jupyter
 
