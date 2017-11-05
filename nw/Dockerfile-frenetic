@@ -1,0 +1,10 @@
+FROM ocaml/opam:ubuntu-14.04_ocaml-4.05.0
+
+RUN mkdir src && cd src && \
+	git clone https://github.com/frenetic-lang/frenetic
+
+RUN opam pin add frenetic src/frenetic -n -k git && \
+	opam install -y frenetic 
+
+# RUN	sudo pip install -e  src/frenetic/lang/python
+
