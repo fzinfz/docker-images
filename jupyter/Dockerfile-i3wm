@@ -14,8 +14,9 @@ RUN chmod +x *.sh
 
 RUN pip install ryu
 
-RUN echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list && \
-    apt update && apt install -y opam m4
-RUN opam init --auto-setup && eval `opam config env` && opam install -y depext
-#RUN opam install -y jupyter
 
+# RUN echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list && \
+#    apt update && apt install -y opam m4
+# RUN opam init --auto-setup && eval `opam config env` && opam install -y depext
+# RUN opam install -y jupyter  # failed
+# Official: https://github.com/akabe/docker-ocaml-jupyter-datascience
