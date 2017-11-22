@@ -12,4 +12,5 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-browser
 ADD i3wm-vnc-init.sh .
 RUN chmod +x *.sh
 
-RUN apt install -y sqlitebrowser
+RUN pip install ryu
+
