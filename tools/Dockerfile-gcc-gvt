@@ -3,3 +3,12 @@ RUN apt update
 RUN apt install -y vim \
 	dpkg-dev lsb-release \
 	bc libelf-dev git libfdt-dev libpixman-1-dev libssl-dev vim socat libsdl1.2-dev libspice-server-dev autoconf libtool xtightvncviewer tightvncserver x11vnc libsdl1.2-dev uuid-runtime uuid uml-utilities bridge-utils python-dev liblzma-dev libc6-dev
+
+
+RUN apt install -y build-essential \
+    bcc bin86 gawk bridge-utils iproute libcurl3 libcurl4-openssl-dev bzip2 kmod transfig tgif \
+    texinfo texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-fonts-recommended pciutils-dev mercurial \
+    make gcc libc6-dev zlib1g-dev python python-dev python-twisted libncurses5-dev patch libvncserver-dev libsdl-dev libjpeg62-turbo-dev \
+    iasl libbz2-dev e2fslibs-dev git-core uuid-dev ocaml ocaml-findlib libx11-dev bison flex xz-utils libyajl-dev \
+    gettext libpixman-1-dev libaio-dev markdown pandoc \
+    libc6-dev-i386
