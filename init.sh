@@ -6,8 +6,12 @@ mode_host="--privileged --user=root \
 	-v /dev:/dev -v /lib/modules:/lib/modules \
 	--pid=host --ipc=host \
 	--net host \
-	-v $PWD:/data -w /data \
+	-w /data \
 	-v /boot:/boot"
+
+docker_run_rmit_host--image---cmd() {
+    docker run --rm -it $mode_host -v $PWD:/data $*
+}
 
 docker_install() {
 	curl -fsSL get.docker.com | sh
@@ -94,9 +98,6 @@ docker_stats() {
     done
 }
 
-docker_run_rmit_host--image---cmd() {
-    docker run --rm -it $mode_host $*
-}
 
 docker_run_vim() {
     docker_run_rmit_host--image---cmd --entrypoint vim haron/vim $1

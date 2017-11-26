@@ -1,1 +1,0 @@
-_run---image---mode---cmd.sh
