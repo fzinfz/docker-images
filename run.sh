@@ -10,9 +10,6 @@ if [ -z ${1+x} ]; then
 cat << EOF 
 cat script for usage.
 Examples:
-	./_run.sh alpine -it sh
-	./_run.sh python "--rm -it --net host"
-	./_run.sh nginx "-d --net host"
 	./_run.sh rabbitmq/amqp/...(pre-defined docker run, check script for details)
 	
 EOF
@@ -31,16 +28,6 @@ case $n in
   rabbitmq | amqp ) 
 	i="relaxart/rabbitmq-server"
 	mode="$mode_d --host host"
-	;;
-  iperf | iperf3 )
-        i="fzinfz/tools"
-	mode="$mode_d --net host"
-	cmd="iperf3 -B $IP_Private -s"
-	;;
-  miniconda | conda )
-	i="continuumio/miniconda"
-	mode="--rm -it -v $(pwd)/../docker-data/conda_envs:/opt/conda/envs/ -w /opt/conda/envs"
-	cmd="/bin/bash"
 	;;
   mysql | mysql5 )
 	i="mysql:5"
@@ -81,10 +68,6 @@ case $n in
 	mode="$mode_d --net host -v /:/host -v $(pwd)/../docker-config/cloud-sdk/gcloud_key.json:/key.json"
 	cmd="sh -c \"gcloud auth activate-service-account --key-file=/key.json && sleep infinity\""
 	;;
-  unifi )
-        i="linuxserver/unifi"
-        mode="-v /root/data/docker-images/../docker-data/unifi:/config -e PGID=10001 -e PUID=10001 --net host"
-        ;;
   softether )
         i="siomiz/softethervpn"
         mode="--cap-add NET_ADMIN --net host"
@@ -98,21 +81,6 @@ case $n in
   phpfm | fm )
 	i="fzinfz/tools:fm"
 	mode="$mode_d $mode_host"
-	;;
-  ss | ss-libev )
-	i="fzinfz/shadowsocks:ssmanager-sorz"
-	mode="$mode_i --net host --entrypoint=/bin/sh"
-#	cmd=
-	;;
-  ss-manager-libev )
-	i="easypi/shadowsocks-libev"
-	mode="$mode_d --net host"
-	cmd="ss-manager -m aes-256-cfb -u --manager-address 127.0.0.1:6001"
-	;;
-  ss-manager-py )
-	i="ritou11/docker-shadowsocks"
-	mode="$mode_d --net host --entrypoint=/bin/sh"
-#	cmd="ssserver -m aes-256-cfb --manager-address 127.0.0.1:7001"  # not work, ssserver is client of ssmanager here
 	;;
   sni | sniproxy )
 	i="mritd/sniproxy"

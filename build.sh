@@ -6,7 +6,7 @@ Usage:
 	1. Create <folder_name>/Dockerfile[-<tag>] file
 	2. ./build.sh <folder_name> [tag]	
 Examples: 
-	./build.sh ubuntu
+	./build.sh jupyter
 	./build.sh jupyter jvm
 EOF
 exit 
