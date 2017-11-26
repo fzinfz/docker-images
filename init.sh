@@ -1,3 +1,35 @@
+#!/bin/bash
+
+mode_d='-d --restart unless-stopped'
+mode_host="--privileged --user=root \
+	--cap-add=ALL \
+	-v /dev:/dev -v /lib/modules:/lib/modules \
+	--pid=host --ipc=host \
+	--net host \
+	-v $PWD:/data -w /data \
+	-v /boot:/boot"
+
+docker_install() {
+	curl -fsSL get.docker.com | sh
+}
+
+docker_install_CE_on_RHEL() {
+    sudo yum install -y yum-utils
+    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum makecache fast
+    sudo yum -y install docker-ce
+    sudo systemctl start docker
+}
+
+docker_export--path--image() {
+    docker save -o $1 $2
+}
+
+docker_import--path() {
+    docker load -i $1
+}
+
+
 docker_rm_all_stopped() {
     # docker ps -a | egrep 'Exited|Created' | awk '{print $1}' | xargs --no-run-if-empty docker rm
     docker container prune
@@ -63,8 +95,13 @@ docker_stats() {
 }
 
 
-mode_d='-d --restart unless-stopped'
-mode_host='--privileged --cap-add=ALL -it -v /dev:/dev -v /lib/modules:/lib/modules --pid=host --ipc=host --net host -v /:/host'
+docker_run_rmit_host--image---cmd() {
+    docker run --rm -it $mode_host $*
+}
+
+docker_run_vim() {
+    docker_run_rmit_host--image---cmd --entrypoint vim haron/vim $1
+}
 
 docker_run_vim_py() {
     docker run -it --rm -v $(pwd):/src fzinfz/tools:vim-py $1
