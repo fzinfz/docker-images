@@ -7,6 +7,6 @@ https://github.com/fzinfz/docker-images
 Some enviorment variables should be set manually 
 
 ## Naming rules
-`source init.sh` for docker management.
+`source init.sh` for docker management.  
 Run `./_build.sh` to show docker build commands.  
 Run and edit `_run.sh` to customize pre-defined docker run commands.  

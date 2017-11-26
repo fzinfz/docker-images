@@ -21,7 +21,7 @@ docker_vim_py() {
 }
 
 docker_bash() {
-    docker run -it --rm -v $(pwd):/data $mode_host fzinfz/tools
+    docker run -it --rm -v $(pwd):/data $mode_host -w /data fzinfz/tools
 }
 
 docker_rm_all_stopped() {
@@ -86,4 +86,8 @@ docker_stats() {
         awk '{print $1}' | grep -v CONTAINER`; do docker ps | grep $line | awk '{printf $NF" "}' && \
         echo $(( `cat /sys/fs/cgroup/memory/docker/$line*/memory.usage_in_bytes` / 1024 / 1024 ))MB ; \
     done
+}
+
+docker_anaconda3() {
+    docker run --rm -it --net host -v $PWD:/src -w /src fzinfz/anaconda3  /bin/bash
 }
