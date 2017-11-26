@@ -10,3 +10,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y build-essential \
     iasl libbz2-dev e2fslibs-dev git-core uuid-dev ocaml ocaml-findlib libx11-dev bison flex xz-utils libyajl-dev \
     gettext libpixman-1-dev libaio-dev markdown pandoc \
     libc6-dev-i386
+
+RUN apt install -y vim

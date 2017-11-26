@@ -33,8 +33,13 @@ docker_rmi_all() {
      docker rmi $(docker images -q)
 }
 
-docker_rmi_all_unsed() {
+docker_rmi_all_unused() {
      docker image prune
+}
+
+docker_rmi_all_none() {
+    docker_rm_all_stopped
+    docker images | egrep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
 }
 
 docker_stop_all() {
@@ -70,11 +75,6 @@ docker_logs--container() {
 
 }
 
-docker_rmi_all_none() {
-    docker_rm_all_stopped
-    docker images | egrep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
-
-}
 
 docker_stats() {
      # https://github.com/moby/moby/issues/20973
