@@ -103,7 +103,7 @@ docker_run_vim() {
 }
 
 docker_run_vim_py() {
-    docker run -it --rm -v $(pwd):/src fzinfz/tools:vim-py $1
+    docker_run_rmit_host--image---cmd --entrypoint vim fedeg/python-vim $1
 }
 
 docker_run_bash() {
