@@ -107,11 +107,7 @@ docker_run_vim_py() {
 }
 
 docker_run_bash() {
-    docker run -it --rm -v $(pwd):/data $mode_host fzinfz/tools
-}
-
-docker_run_golang_rmit(){
-    docker run --rm -it -v $PWD:/data  golang /bin/bash
+    docker_run_rmit_host--image---cmd fzinfz/tools
 }
 
 docker_run_unifi_d() {
