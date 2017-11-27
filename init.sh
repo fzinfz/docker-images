@@ -1,16 +1,18 @@
 #!/bin/bash
 
+set -x # debug
+
 mode_d='-d --restart unless-stopped'
-mode_host="--privileged --user=root \
-	--cap-add=ALL \
+mode_host="--privileged --user=root --cap-add=ALL \
+    --pid=host --ipc=host --net host \
 	-v /dev:/dev -v /lib/modules:/lib/modules \
-	--pid=host --ipc=host \
-	--net host \
-	-w /data \
-	-v /boot:/boot"
+    -v /boot:/boot -v /:/host"
 
 docker_run_rmit_host--image---cmd() {
-    docker run --rm -it $mode_host -v $PWD:/data $*
+    docker run --rm -it $mode_host \
+        -v $PWD:/data -w /data \
+        --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+        $*
 }
 
 docker_install() {
@@ -55,6 +57,10 @@ docker_rmi_all_none() {
 
 docker_stop_all() {
     docker kill $(docker ps -q)
+}
+
+docker_log_save--container--path(){
+    docker inspect --format='{{.LogPath}}' $1 > $2
 }
 
 docker_logs--container--regex() {
@@ -112,6 +118,8 @@ docker_run_bash() {
 }
 
 docker_run_unifi_d() {
+    docker stop unifi && docker rm unifi
+
     docker run -d --init --restart unless-stopped \
 	-p 8080:8080 -p 8443:8443 -p 3478:3478/udp -p 10001:10001/udp \
 	-e TZ='Asia/Shanghai' \

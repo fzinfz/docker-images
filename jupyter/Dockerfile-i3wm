@@ -14,3 +14,4 @@ RUN chmod +x *.sh
 
 RUN pip install ryu
 
+RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install_vscode.sh | bash
