@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x # debug
-
 mode_d='-d --restart unless-stopped'
 mode_host="--privileged --user=root --cap-add=ALL \
     --pid=host --ipc=host --net host \
@@ -17,6 +15,14 @@ docker_run_rmit_host--image---cmd() {
 
 docker_install() {
 	curl -fsSL get.docker.com | sh
+}
+
+docker_install_minikube() {
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
+    chmod +x minikube kubectl
+    sudo mv minikube /usr/local/bin/
+    mv kubectl /usr/local/bin/
 }
 
 docker_install_CE_on_RHEL() {
