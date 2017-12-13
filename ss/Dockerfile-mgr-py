@@ -4,4 +4,6 @@ RUN pip3 install git+https://github.com/shadowsocks/shadowsocks.git@master && \
     pip3 install git+https://github.com/sorz/ssmanager.git && \
     pip3 install git+https://github.com/fzinfz/ssmanager-nopanel.git
 
+ENV PYTHONUNBUFFERED 1
+
 ENTRYPOINT ["ssmanager-nopanel"]

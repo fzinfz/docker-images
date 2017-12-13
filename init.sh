@@ -13,6 +13,10 @@ docker_run_rmit_host--image---cmd() {
         $*
 }
 
+docker_update_restart_unless_stopped--container(){
+docker container update nfs --restart unless-stopped
+}
+
 docker_install() {
 	curl -fsSL get.docker.com | sh
 }
@@ -134,3 +138,14 @@ docker_run_unifi_d() {
 	--name unifi jacobalberty/unifi
 }
 
+docker_run_unifi_d() {
+    docker create \
+    --name=plex \
+    --net=host \
+    -e VERSION=latest \
+    -e PUID=1 -e PGID=0 \
+    -e TZ=Asia/Shanghai \
+    -v $PWD/plex_config:/config \
+    -v $PWD/movies:/data/movies \
+    linuxserver/plex
+}

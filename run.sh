@@ -29,6 +29,10 @@ case $n in
 	i="relaxart/rabbitmq-server"
 	mode="$mode_d --host host"
 	;;
+  nfs | nfs4 ) 
+	i="itsthenetwork/nfs-server-alpine:latest"
+	mode="$mode_d --privileged --host host -v /data:/nfsshare -e SHARED_DIRECTORY=/nfsshare"
+	;;	
   mysql | mysql5 )
 	i="mysql:5"
 	if [ -z ${Password+x} ];then
