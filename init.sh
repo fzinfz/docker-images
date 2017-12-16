@@ -152,12 +152,13 @@ docker_run_unifi_d() {
 }
 
 
-docker_run_grafana_d--port--pwd---configPath(){
+docker_run_grafana_d--port--pwd---configPath() {
 
     if [ -z ${3+x} ]; then
         conf=""
     else
         conf="-v $3:/etc/grafana/grafana.ini/etc/grafana/grafana.ini"
+    fi
 
     docker run --name $n \
         --net host \
