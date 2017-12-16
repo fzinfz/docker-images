@@ -2,7 +2,7 @@
 
 [Dockerfile](https://github.com/fzinfz/docker-images/blob/master/anaconda3/Dockerfile)
 
-(Note: this image run under `root `, use at your own risk.)
+Note: this image run under `root `, use at your own risk.
 
 # Installed kernels
 - python 3.6.3+ (uwsgi gunicorn django flask bottle hug pyramid & common DB clients)

@@ -30,6 +30,7 @@ docker_install_minikube() {
 }
 
 docker_install_CE_on_RHEL() {
+    # on EE supported on RHEL officially
     sudo yum install -y yum-utils
     sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum makecache fast
@@ -37,15 +38,21 @@ docker_install_CE_on_RHEL() {
     sudo systemctl start docker
 }
 
+docker_build--folder---tag(){
+    if [ -z ${2+x} ]; then
+        cmd="docker build -t $docker_user/$1:latest $1"
+    else
+        cmd="docker build -f $1/Dockerfile-$2 -t $docker_user/$1:$2 $1"
+    fi
+}
+
 docker_export--path--image() {
     docker save -o $1 $2
 }
 
-
 docker_import--path() {
     docker load -i $1
 }
-
 
 docker_rm_all_stopped() {
     # docker ps -a | egrep 'Exited|Created' | awk '{print $1}' | xargs --no-run-if-empty docker rm
@@ -69,8 +76,8 @@ docker_stop_all() {
     docker kill $(docker ps -q)
 }
 
-docker_log_save--container--path(){
-    docker inspect --format='{{.LogPath}}' $1 > $2
+docker_log_json_path--container--cmd(){
+    $2 $(docker inspect --format='{{.LogPath}}' $1)
 }
 
 docker_logs--container--regex() {
@@ -96,12 +103,6 @@ docker_kill_N_rm--container() {
     docker kill $1
     docker rm $1
 }
-
-docker_logs--container() {
- docker inspect -f {{.LogPath}} $1 | xargs vi
-
-}
-
 
 docker_stats() {
      # https://github.com/moby/moby/issues/20973
@@ -148,4 +149,24 @@ docker_run_unifi_d() {
     -v $PWD/plex_config:/config \
     -v $PWD/movies:/data/movies \
     linuxserver/plex
+}
+
+
+docker_run_grafana_d--port--pwd---configPath(){
+
+    if [ -z ${3+x} ]; then
+        conf=""
+    else
+        conf="-v $3:/etc/grafana/grafana.ini/etc/grafana/grafana.ini"
+
+    docker run --name $n \
+        --net host \
+        -d --restart unless-stopped \
+        -e "GF_SERVER_HTTP_PORT=$1" \
+        -e "GF_SECURITY_ADMIN_PASSWORD=$2" \
+        $conf grafana/grafana
+
+# More config [GF_[Section]_Key]
+# http://docs.grafana.org/installation/configuration/
+
 }
