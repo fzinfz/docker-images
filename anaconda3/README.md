@@ -25,19 +25,17 @@ docker run --name jupyter \
 ```
 Visit: http://server_address:8899
 
-# Quick start with self-signed HTTPS and X11 forwarding
+# Quick start with self-signed HTTPS
 ```
 docker run --name jupyter \
     --net host \
     -v $PWD:/data -w /data \
     -v $PWD/docker-data/anaconda3:/root \
-    --env="DISPLAY" -v $HOME/.Xauthority:/root/.Xauthority:rw \
     -e GEN_CERT=yes  \
     --restart unless-stopped \
     -d fzinfz/anaconda3 \
     jupyter notebook  --ip=* --allow-root
 ```
-     -v /tmp/.X11-unix:/tmp/.X11-unix \
 
 Visit: https://server_address:8888
 
@@ -48,7 +46,5 @@ Visit: https://server_address:8888
     docker exec -it jupyter /bin/bash
 
 # Start sshd manually
-Usually for X11 forwarding or IDE remote debug.
-
 	docker exec -it jupyter /usr/sbin/sshd 
     # default port:2222; root password: MyRootPassword

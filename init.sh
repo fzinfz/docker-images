@@ -6,7 +6,17 @@ mode_host="--privileged --user=root --cap-add=ALL \
 	-v /dev:/dev -v /lib/modules:/lib/modules \
     -v /boot:/boot -v /:/host"
 
+docker_exec_bash--container(){
+    docker exec -it $1 /bin/bash
+}
+
 docker_run_rmit_host--image---cmd() {
+    docker run --rm -it $mode_host \
+        -v $PWD:/data -w /data \
+        $*
+}
+
+docker_run_x11_rmit_host--image---cmd() {
     docker run --rm -it $mode_host \
         -v $PWD:/data -w /data \
         --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
@@ -14,7 +24,7 @@ docker_run_rmit_host--image---cmd() {
 }
 
 docker_update_restart_unless_stopped--container(){
-docker container update nfs --restart unless-stopped
+    docker container update nfs --restart unless-stopped
 }
 
 docker_install() {
@@ -91,6 +101,11 @@ docker_rm_all() {
 
 docker_clean_all() {
     docker system prune
+}
+
+docker_stop_N_rm(){
+    docker stop $1
+    docker rm $1
 }
 
 docker_stop_N_rm--egrep() {
