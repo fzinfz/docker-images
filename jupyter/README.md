@@ -27,3 +27,11 @@ Press `Alt` + `Enter` to start terminal, then type `bash` to use bash shell.
 # Notes for `xfce` image
 Run `tightvncserver` manually to start vnc server.
 Fix `Tab` not working: `Application Menu` -> `Settings` -> `Window Manager` -> `Keyboard`: clear `Switch window for same application`
+
+# Custom kernels
+https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
+
+# Other Multi-kernel Jupyter images
+Scala - Haskell - Rust - Elm - Elixir - Swift - Kotlin: 
+https://hub.docker.com/r/poad/docker-jupyter-multi-kernel/
+

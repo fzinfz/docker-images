@@ -1,4 +1,4 @@
-# Dockerfile & README.md
+# Dockerfiles
 https://github.com/fzinfz/docker-images/tree/master/ss
 
 # Panels

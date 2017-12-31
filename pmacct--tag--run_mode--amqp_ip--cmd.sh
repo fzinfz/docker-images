@@ -19,10 +19,10 @@ Usage:
 	RUN_MODE(docker run parameters): -it, -d, ... 
 
 Examples:
-	./pmacct.sh '' '-it --rm' bash
-	./pmacct.sh '' '-it --rm' uacctd -V
-	./pmacct.sh '' -d nfacctd -f /conf/amqp.conf -l 2056
-	./pmacct.sh '' -d pmacctd -f /conf/nfprobe.conf -i ens3
+	./pmacct...sh '' '-it --rm' bash
+	./pmacct...sh '' '-it --rm' uacctd -V
+	./pmacct...sh '' -d nfacctd -f /conf/amqp.conf -l 2056
+	./pmacct...sh '' -d pmacctd -f /conf/nfprobe.conf -i ens3
 EOF
 exit 1
 fi
