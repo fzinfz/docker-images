@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3-jessie
 
 RUN echo "deb http://deb.debian.org/debian jessie-backports main\n" > /etc/apt/sources.list.d/jessie-backports.list && \
     echo "deb http://deb.debian.org/debian jessie-backports-sloppy main" >> /etc/apt/sources.list.d/jessie-backports.list && \
