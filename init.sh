@@ -50,9 +50,9 @@ docker_install_CE_on_RHEL() {
 
 docker_build--folder---tag(){
     if [ -z ${2+x} ]; then
-        cmd="docker build -t $docker_user/$1:latest $1"
+        docker build -t $docker_user/$1:latest $1
     else
-        cmd="docker build -f $1/Dockerfile-$2 -t $docker_user/$1:$2 $1"
+        docker build -f $1/Dockerfile-$2 -t $docker_user/$1:$2 $1
     fi
 }
 
