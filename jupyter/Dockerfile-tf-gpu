@@ -1,9 +1,5 @@
-# Modified from: https://raw.githubusercontent.com/jupyter/docker-stacks/master/tensorflow-notebook/Dockerfile
-
 FROM jupyter/scipy-notebook
 
-RUN conda install --yes \
-    'tensorflow-gpu' \
-    'keras=2.0*' && \
-    conda clean -tipsy && \
+RUN pip install 'tensorflow-gpu>=1.4' && \
+    pip install 'keras>=2.1'  && \
     fix-permissions $CONDA_DIR
