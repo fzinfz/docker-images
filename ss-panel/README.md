@@ -1,26 +1,35 @@
 # Dockerfile & README.md
 https://github.com/fzinfz/docker-images/tree/master/ss-panel
 
-# ss server/manager for node server
-https://hub.docker.com/r/fzinfz/ss/
+# Docker images collection
+Go: https://github.com/go-ignite/ignite-docker  
+Django: https://hub.docker.com/r/fzinfz/shadowsocks-xsadmin/  
+NodeJS: https://hub.docker.com/r/gyteng/ssmgr/  
+PHP: https://hub.docker.com/r/orvice/ss-panel/  (V4)
 
-# Docker Images for other panels 
-django: https://hub.docker.com/r/fzinfz/shadowsocks-xsadmin/  
-nodejs: https://hub.docker.com/r/gyteng/ssmgr/  
-php: https://hub.docker.com/r/orvice/ss-panel/  (V4)
+# Github projects collection
+## Django
+https://github.com/Ehco1996/django-sspanel  
+https://github.com/Bravoyk/xsadmin/network  (Deprecated?)  
+https://github.com/laobubu/ssland (Deprecated?)  
+https://github.com/GameXG/shadowsocks_admin  (Deprecated?)  
 
-# Github projects
-## nodejs
-https://github.com/shadowsocks/shadowsocks-manager
-
-## php
+## PHP
 https://github.com/sendya/shadowsocks-panel  
 https://github.com/orvice/ss-panel  
 https://github.com/esdeathlove/ss-panel-v3-mod  
 
-## django
-https://github.com/alishtory/xsadmin  
-https://github.com/Ehco1996/django-sspanel  
-https://github.com/alishtory/xsadmin  
-https://github.com/laobubu/ssland  
-https://github.com/GameXG/shadowsocks_admin  
+## NodeJS
+https://github.com/shadowsocks/shadowsocks-manager
+
+## TypeScript
+https://github.com/PaperDashboard/Sakura
+
+## Go
+https://github.com/go-ignite/ignite/wiki ([No multi backend support yet](https://github.com/go-ignite/ignite/issues/3))
+
+## Rails
+https://github.com/timlentse/ss-panel-rails (Deprecated)  
+
+## More
+https://github.com/topics/ss-panel

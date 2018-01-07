@@ -1,23 +1,25 @@
-Base image & basic usages: https://hub.docker.com/r/fzinfz/anaconda3/  
-Dockerfile: https://github.com/fzinfz/docker-images/tree/master/jupyter  
+# Dockerfile
+https://github.com/fzinfz/docker-images/tree/master/jupyter  
 
 # Tags
 
-`latest`: python 2/3 + bash + selenium/firefox + nodejs + kotlin [![](https://images.microbadger.com/badges/image/fzinfz/jupyter.svg)](https://microbadger.com/images/fzinfz/jupyter "Get your own image badge on microbadger.com")   
-`xfce`:	based on `latest`  [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:xfce.svg)](https://microbadger.com/images/fzinfz/jupyter:xfce "Get your own image badge on microbadger.com")  
-`i3wm`:	based on `latest`, add chromium/vscode & experimental features [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:i3wm.svg)](https://microbadger.com/images/fzinfz/jupyter:i3wm "Get your own image badge on microbadger.com")
+`latest`: Based on [`fzinfz/anaconda3`](https://hub.docker.com/r/fzinfz/anaconda3/), add selenium/firefox, nodejs, jvm/kotlin [![](https://images.microbadger.com/badges/image/fzinfz/jupyter.svg)](https://microbadger.com/images/fzinfz/jupyter)   
+`xfce`:	based on `latest`  [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:xfce.svg)](https://microbadger.com/images/fzinfz/jupyter:xfce)  
+`i3wm`:	based on `latest`, add chromium/vscode & experimental features [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:i3wm.svg)](https://microbadger.com/images/fzinfz/jupyter:i3wm)  
+`tf-gpu`: based on [`jupyter/scipy-notebook`](https://github.com/jupyter/docker-stacks/#visual-overview), add tensorflow-gpu & keras [![](https://images.microbadger.com/badges/image/fzinfz/jupyter:tf-gpu.svg)](https://microbadger.com/images/fzinfz/jupyter:tf-gpu)  
 
 # Quick start example for `i3wm` image
+
     docker run --name jupyter \
         --net host \
-        -v /:/host \
-        -e GEN_CERT=yes  \
-        --restart unless-stopped \
+        -v $PWD:/host -w /host \
+        -d --restart unless-stopped \
         --security-opt seccomp:unconfined \
-        -d fzinfz/jupyter:i3wm \
-        jupyter notebook  --ip=* --allow-root
+        fzinfz/jupyter:i3wm \
+        jupyter notebook --ip=* --allow-root --port=8888
 
-# Start VNC server
+# Start `i3wm` VNC server
+
     docker exec -it jupyter /bin/bash
     ./i3wm-vnc-init.sh
 
@@ -35,4 +37,4 @@ https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
 Go: https://github.com/gopherdata/gophernotes  
 Scala - Haskell - Rust - Elm - Elixir - Swift - Kotlin: 
 https://hub.docker.com/r/poad/docker-jupyter-multi-kernel/
-
+R - Julie: https://hub.docker.com/r/jupyter/datascience-notebook/  
