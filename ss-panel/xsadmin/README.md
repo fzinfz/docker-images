@@ -1,4 +1,4 @@
-**Deprecate**
+**Deprecated**
 Latest work: https://github.com/Bravoyk/xsadmin/network
 
 # Dockerfile
