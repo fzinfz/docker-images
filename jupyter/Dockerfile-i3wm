@@ -16,4 +16,4 @@ RUN pip install ryu tabulate
 
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install_vscode.sh | bash
 
-RUN apt update && apt install -y xpra
+RUN apt update && apt install -y xpra phantomjs python3-selenium
