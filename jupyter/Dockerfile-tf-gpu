@@ -1,6 +1,4 @@
 FROM jupyter/scipy-notebook
 
-RUN pip install 'tensorflow-gpu>=1.4' && \
-    pip install 'keras>=2.1'  && \
-    fix-permissions $CONDA_DIR
-RUN pip install tensorflow
+RUN pip install tensorflow tensorflow-gpu keras \
+ && fix-permissions $CONDA_DIR
