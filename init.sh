@@ -90,6 +90,11 @@ docker_log_json_path--container--cmd(){
     $2 $(docker inspect --format='{{.LogPath}}' $1)
 }
 
+docker_log_clear--container() {
+    echo "" > $(docker inspect --format='{{.LogPath}}'  $1)
+}
+
+
 docker_logs--container--regex() {
     docker logs $1  2>&1 | grep -P $2
 }

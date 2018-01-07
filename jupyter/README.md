@@ -32,6 +32,7 @@ Fix `Tab` not working: `Application Menu` -> `Settings` -> `Window Manager` -> `
 https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
 
 # Other Multi-kernel Jupyter images
+Go: https://github.com/gopherdata/gophernotes  
 Scala - Haskell - Rust - Elm - Elixir - Swift - Kotlin: 
 https://hub.docker.com/r/poad/docker-jupyter-multi-kernel/
 
