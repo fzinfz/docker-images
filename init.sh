@@ -191,3 +191,20 @@ docker_run_grafana_d--port--pwd---configPath() {
 # http://docs.grafana.org/installation/configuration/
 
 }
+
+docker_run_glances(){
+    docker run --rm -it \
+        -v /var/run/docker.sock:/var/run/docker.sock:ro \
+        --pid host \
+        docker.io/nicolargo/glances
+}
+
+docker_run_glances_web_d(){
+    docker run --name glances \
+        -d --restart="always" \
+        -p 61208-61209:61208-61209 \
+        -e GLANCES_OPT="-w" \
+        -v /var/run/docker.sock:/var/run/docker.sock:ro \
+        --pid host \
+        docker.io/nicolargo/glances
+}
