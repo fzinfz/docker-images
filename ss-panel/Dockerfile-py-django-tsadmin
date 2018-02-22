@@ -1,6 +1,6 @@
-FROM fzinfz/tools:django
+FROM fzinfz/tools:django2
 
-RUN git clone https://github.com/fzinfz/tsadmin.git
-WORKDIR ./tsadmin
+RUN git clone https://github.com/fzinfz/tsadmin.git /tsadmin
+WORKDIR /tsadmin
 RUN pip install -r requirements.txt
 
