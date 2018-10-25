@@ -1,6 +1,8 @@
 FROM continuumio/anaconda3
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
+RUN pip install --upgrade pip
+
 # https://github.com/Calysto/metakernel/tree/master/metakernel_bash
 RUN pip install metakernel_bash
 
@@ -21,7 +23,8 @@ RUN /bin/bash -c "source activate py27 && \
 
 # DB support for Python 3
 RUN conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
-RUN apt-get install -y libmysqlclient-dev
+RUN apt-get install -y libmariadbclient-dev-compat 
+# libmysqlclient-dev not working anymore
 
 # Support passing config from `docker run -e`, check https://github.com/jupyter/docker-stacks    
 ADD https://github.com/jupyter/docker-stacks/raw/master/base-notebook/jupyter_notebook_config.py /root/.jupyter/
@@ -43,7 +46,7 @@ RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/sshd-enable--po
 
 RUN apt-get install -y build-essential python-dev
 RUN conda upgrade -y anaconda
-RUN pip install scrapy uwsgi gunicorn django flask bottle hug pyramid
+RUN conda install -y scrapy uwsgi gunicorn django flask bottle hug pyramid
 
 RUN apt-get install -y locales-all ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy
 
