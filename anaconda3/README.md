@@ -18,7 +18,8 @@ docker run --name jupyter \
     fzinfz/anaconda3 \
     jupyter notebook --allow-root --ip=* --port=8888
 ```
-Visit: http://server_address:8888
+Visit: http://server_address:8888  
+(docker run with `-e GEN_CERT=yes` for https)
 
 # Display startup logs and token
     docker logs jupyter

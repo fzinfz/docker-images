@@ -36,6 +36,10 @@ RUN /bin/bash -c "source activate py27 && \
     conda install pika pyzmq && \
     source deactivate py27"
 
+# perl 5 kernel: https://github.com/EntropyOrg/p5-Devel-IPerl
+RUN apt install libzmq3-dev cpanminus
+RUN cpanm Devel::IPerl
+
 # Linux Tools for shell
 RUN curl https://raw.githubusercontent.com/fzinfz/scripts/master/install-tools.sh | bash
 
