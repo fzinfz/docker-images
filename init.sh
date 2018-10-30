@@ -86,10 +86,6 @@ docker_stop_all() {
     docker kill $(docker ps -q)
 }
 
-docker_log_json_path--container--cmd(){
-    $2 $(docker inspect --format='{{.LogPath}}' $1)
-}
-
 docker_log_clear--container() {
     echo "" > $(docker inspect --format='{{.LogPath}}'  $1)
 }
@@ -122,6 +118,10 @@ docker_stop_N_rm--egrep() {
 docker_kill_N_rm--container() {
     docker kill $1
     docker rm $1
+}
+
+docker_inspect--container(){
+    docker inspect $1 | jq '.[0] | {Config: .Config, Mounts: .Mounts} '
 }
 
 docker_stats() {
