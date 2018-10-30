@@ -37,7 +37,7 @@ RUN /bin/bash -c "source activate py27 && \
     source deactivate py27"
 
 # perl 5 kernel: https://github.com/EntropyOrg/p5-Devel-IPerl
-RUN apt install libzmq3-dev cpanminus
+RUN apt install -y libzmq3-dev cpanminus
 RUN cpanm Devel::IPerl
 
 # Linux Tools for shell
