@@ -148,6 +148,13 @@ docker_run_bash() {
     docker_run_rmit_host--image---cmd fzinfz/tools
 }
 
+docker_run_jupyterhub(){
+    docker run $mode_d $mode_host --name jupyterhub \
+        jupyterhub/jupyterhub jupyterhub --ip 0.0.0.0
+}
+
+docker run -d -p 8080:8080 -p 1521:1521 sath89/oracle-12c
+
 docker_run_unifi_d() {
     docker stop unifi && docker rm unifi
 
@@ -159,7 +166,7 @@ docker_run_unifi_d() {
 	--name unifi jacobalberty/unifi
 }
 
-docker_run_unifi_d() {
+docker_run_plex_d() {
     docker create \
     --name=plex \
     --net=host \
