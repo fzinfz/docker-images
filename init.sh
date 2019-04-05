@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z "$docker_user" ]; then
+	read -p "DockerHub user name: " docker_user
+fi
+
 mode_d='-d --restart unless-stopped'
 mode_host="--privileged --user=root --cap-add=ALL \
     --pid=host --ipc=host --net host \

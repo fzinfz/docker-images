@@ -1,7 +1,7 @@
 FROM continuumio/anaconda3
 MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip # don't upgrade pip because of 2.7 kernel
 
 # https://github.com/Calysto/metakernel/tree/master/metakernel_bash
 RUN pip install metakernel_bash
