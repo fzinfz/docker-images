@@ -2,7 +2,7 @@ if [ $0 = 'ELK.init.sh'  ];then
     echo "Usage: source $0"
 fi
 
-export ELK_version=6.0.0
+export ELK_version=6.5.0
 
 export IP_ELK_E=${IP_ELK_E:-"127.0.0.1"}
 

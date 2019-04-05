@@ -90,6 +90,10 @@ docker_stop_all() {
     docker kill $(docker ps -q)
 }
 
+docker_log_vi--container(){
+    docker inspect --format='{{.LogPath}}' $1 | xargs vi
+}
+
 docker_log_clear--container() {
     echo "" > $(docker inspect --format='{{.LogPath}}'  $1)
 }
