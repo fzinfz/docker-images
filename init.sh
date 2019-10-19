@@ -28,7 +28,7 @@ docker_run_x11_rmit_host--image---cmd() {
 }
 
 docker_update_restart_unless_stopped--container(){
-    docker container update nfs --restart unless-stopped
+    docker container update $1 --restart unless-stopped
 }
 
 docker_install() {
