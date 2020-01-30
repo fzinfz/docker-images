@@ -17,8 +17,7 @@ RUN pip install --upgrade pexpect && \
 # Linux Tools for shell
 RUN curl -sS https://raw.githubusercontent.com/fzinfz/scripts/master/linux/install.sh | bash -s -- -p=base,dev -i -u
 
-RUN conda config --add channels conda-forge && \
-    conda install -y pika pyzmq scrapy uwsgi gunicorn django flask bottle hug pyramid python-graphviz && \
-    conda install -y pymongo pymysql mysql-connector-python psycopg2 sqlite
+RUN source /dev/stdin <<< "$(https://raw.githubusercontent.com/fzinfz/scripts/master/linux/python.sh)" && \
+    install_packages && install_kernel_py27
 
-EXPOSE 8888
+EXPOSE 8888 2222

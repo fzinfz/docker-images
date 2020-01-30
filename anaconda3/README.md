@@ -21,11 +21,18 @@ Visit: https://server_address:8888
 
 # Display startup logs and token
 
-    docker logs jupyter
+    docker logs jupyter 2>&1 | grep token
 
 # Attach container
 
     docker exec -it jupyter /bin/bash
+
+# Enable sshd
+
+    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/setup_sshd.sh)"
+    sshd_change_port 2222
+    sshd_allow_root_login && sshd_change_root_password MyRootPassword
+    /usr/sbin/sshd 
 
 # Images adding nodejs/kotlin kernels and xfce/i3wm and more
 https://hub.docker.com/r/fzinfz/jupyter/
