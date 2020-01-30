@@ -15,10 +15,10 @@ RUN pip install --upgrade pexpect && \
     python -m bash_kernel.install
 
 # Linux Tools for shell
-RUN curl -sS http://tx.mpio.win:8090/scripts/linux/install.sh | bash -s -- -p=base
+RUN curl -sS https://raw.githubusercontent.com/fzinfz/scripts/master/linux/install.sh | bash -s -- -p=base,dev -i -u
 
 RUN conda config --add channels conda-forge && \
     conda install -y pika pyzmq scrapy uwsgi gunicorn django flask bottle hug pyramid python-graphviz && \
-    conda install -y pyzmq pymongo pymysql mysql-connector-python psycopg2 sqlite
+    conda install -y pymongo pymysql mysql-connector-python psycopg2 sqlite
 
 EXPOSE 8888
