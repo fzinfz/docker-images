@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z "$docker_user" ]; then
+	read -p "DockerHub user name: " docker_user
+fi
+
 mode_d='-d --restart unless-stopped'
 mode_host="--privileged --user=root --cap-add=ALL \
     --pid=host --ipc=host --net host \
@@ -24,7 +28,7 @@ docker_run_x11_rmit_host--image---cmd() {
 }
 
 docker_update_restart_unless_stopped--container(){
-    docker container update nfs --restart unless-stopped
+    docker container update $1 --restart unless-stopped
 }
 
 docker_install() {
@@ -86,8 +90,8 @@ docker_stop_all() {
     docker kill $(docker ps -q)
 }
 
-docker_log_json_path--container--cmd(){
-    $2 $(docker inspect --format='{{.LogPath}}' $1)
+docker_log_vi--container(){
+    docker inspect --format='{{.LogPath}}' $1 | xargs vi
 }
 
 docker_log_clear--container() {
@@ -122,6 +126,10 @@ docker_stop_N_rm--egrep() {
 docker_kill_N_rm--container() {
     docker kill $1
     docker rm $1
+}
+
+docker_inspect--container(){
+    docker inspect $1 | jq '.[0] | {Config: .Config, Mounts: .Mounts} '
 }
 
 docker_stats() {

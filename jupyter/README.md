@@ -38,3 +38,4 @@ Go: https://github.com/gopherdata/gophernotes
 Scala - Haskell - Rust - Elm - Elixir - Swift - Kotlin: 
 https://hub.docker.com/r/poad/docker-jupyter-multi-kernel/
 R - Julie: https://hub.docker.com/r/jupyter/datascience-notebook/  
+JAVA 10 - https://hub.docker.com/r/cbuctok/ijava/
