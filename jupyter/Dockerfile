@@ -1,10 +1,3 @@
 FROM fzinfz/anaconda3 
-MAINTAINER Ferro Fang <fzinfz@gmail.com>
 
-RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/jupyter/install-kernel-jvm.sh | bash
-RUN curl https://raw.githubusercontent.com/fzinfz/docker-images/master/jupyter/install-kernel-nodejs.sh | bash
-
-RUN apt install -y sqlitebrowser \
-      firefox-esr firefox-esr-l10n-zh-cn firefox-esr-l10n-zh-tw
-
-RUN pip install selenium
+RUN pip install pyserial influxdb-client
