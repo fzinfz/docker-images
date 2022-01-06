@@ -161,8 +161,6 @@ docker_run_jupyterhub(){
         jupyterhub/jupyterhub jupyterhub --ip 0.0.0.0
 }
 
-docker run -d -p 8080:8080 -p 1521:1521 sath89/oracle-12c
-
 docker_run_unifi_d() {
     docker stop unifi && docker rm unifi
 
