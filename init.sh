@@ -1,5 +1,8 @@
 #!/bin/bash
 
+[ -f /data/conf/init.sh ] && . /data/conf/init.sh
+[ -f ../scripts/lib/docker.sh ] && . ../scripts/lib/docker.sh || source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/lib/docker.sh)"
+
 if [ -z "$docker_user" ]; then
 	read -p "DockerHub user name: " docker_user
 fi
@@ -9,6 +12,10 @@ mode_host="--privileged --user=root --cap-add=ALL \
     --pid=host --ipc=host --net host \
 	-v /dev:/dev -v /lib/modules:/lib/modules \
     -v /boot:/boot -v /:/host"
+
+docker_untag(){
+    docker image remove --no-prune $1
+}
 
 docker_exec_bash--container(){
     docker exec -it $1 /bin/bash
@@ -52,13 +59,7 @@ docker_install_CE_on_RHEL() {
     sudo systemctl start docker
 }
 
-docker_build--folder---tag(){
-    if [ -z ${2+x} ]; then
-        docker build -t $docker_user/$1:latest $1
-    else
-        docker build -f $1/Dockerfile-$2 -t $docker_user/$1:$2 $1
-    fi
-}
+
 
 docker_export--path--image() {
     docker save -o $1 $2

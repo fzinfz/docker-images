@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# depreated, new: https://github.com/fzinfz/scripts/tree/master/apps_docker
+
 source ./init.sh
 
 if [ -z ${IP_Private+x} ];then
