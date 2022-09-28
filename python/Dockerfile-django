@@ -1,0 +1,29 @@
+FROM python:3.9
+
+RUN pip install pipenv uwsgi pillow requests mistune \
+    python-dotenv \
+    django djangorestframework \
+    django-rest-multiple-models \
+    django-allauth \
+    django-bootstrap3 \
+    django-debug-toolbar \
+    django-extensions \
+    django-filter  \
+    django-htmx \
+    django-import-export \
+    django-registration-redux  \
+    django-markdownx \
+    django-ordered-model \
+    django-jsoneditor  \
+    django-qr-code \
+    django-captcha-admin \
+    django-simple-captcha \
+    django-recaptcha \
+    django-recaptcha2
+
+RUN apt update && apt -y install libz-dev libjpeg-dev libfreetype6-dev python3-dev gettext vim
+
+VOLUME /src
+WORKDIR /src
+ENV PYTHONUNBUFFERED 1
+EXPOSE 8000
